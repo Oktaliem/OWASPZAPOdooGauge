@@ -1,3 +1,73 @@
 # OWASPZAPOdooGauge
+Run Automated Security/Penetration testing with OWASP ZAP + Selenium + TestNG + Gauge + Java + Maven + Odoo
+
+# Environment
+```
+MacOs/linux
+IntelliJ
+```
+
+
+## Gauge
+Gauge is a light-weight cross-platform test automation tool with the ability to author test cases in the business language.
+```
+https://docs.gauge.org/getting_started/installing-gauge.html?os=macos&language=java&ide=intellij
+https://github.com/getgauge-examples/java-maven-selenium
+
+Installation : 
+$ brew install gauge
+$ gauge install java
+
+$ gauge -v
+Gauge version: 1.0.6
+
+Plugins
+-------
+html-report (4.0.8)
+java (0.7.3)
+screenshot (0.0.1)
+
+```
+
+## OWASP ZAP
+The OWASP Zed Attack Proxy (ZAP) is one of the world’s most popular free security tools and is actively maintained by hundreds of international volunteers*. It can help you automatically find security vulnerabilities in your web applications while you are developing and testing your applications. Its also a great tool for experienced pentesters to use for manual security testing.
+```
+brew cask install owasp-zap
+```
+
+## Odoo
+Odoo is an all-in-one business software including CRM, website/e-commerce, billing, accounting, manufacturing, warehouse - and project management, and inventory.
+```
+https://hub.docker.com/r/bitnami/odoo/
+
+Installation :
+$ curl -sSL https://raw.githubusercontent.com/bitnami/bitnami-docker-odoo/master/docker-compose.yml > docker-compose.yml
+
+Run Odoo server :
+$ docker-compose up -d
+
+```
+
+## Project Folders
+```
+https://docs.gauge.org/writing-specifications.html?os=macos&language=java&ide=intellij
+
+Gauge Test
+specs : A specification is a business test case which describes a particular feature of the application that needs testing.
+reports : Gauge test report
+concepts : Concepts provide the ability to combine re-usable, logical groups of steps into a single unit.
+
+TestNG Test
+OdooScanTest.java
+
+```
+
+## Run the Test Via Command Line - TestNG
+```
 mvn clean test -Dclass=OdooScanTest
+```
+
+## Run the Test Via Command Line - TestNG
+```
 mvn gauge:execute -DspecsDir=specs
+```
