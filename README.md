@@ -81,3 +81,16 @@ mvn gauge:execute
 ```
 mvn clean test
 ```
+
+## Report - OWASP ZAP
+i.e.
+![image](https://user-images.githubusercontent.com/26521948/68544654-6341f700-0400-11ea-9624-08bd58c335d5.png)
+
+## Report - GAUGE FRAMEWORK 
+i.e.
+![image](https://user-images.githubusercontent.com/26521948/68544671-9a180d00-0400-11ea-8ebf-4c5b91516ebb.png)
+
+## Recap - Youtube
+```
+https://www.youtube.com/watch?v=Cymsg63eOP4
+```
