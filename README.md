@@ -4,7 +4,7 @@ This repository has 2 ways to run the test :
 - run it via TestNG framework
 - run it via Gauge framework
 
-Gauge is another alternative framework to write a test via specification without gerkhin langunge (Cucumber)
+Gauge is another alternative framework to write a test via specification without gerkhin langunge (i.e Cucumber/JBehave)
 
 # Purpose
 - This demo/repository is to provide example or framework/model that can be integrated in CICD QA-DevSecOps.
