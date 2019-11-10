@@ -1,0 +1,6 @@
+[
+	"gauge",
+	"run",
+	"--dir=/Users/jeremy/Documents/GitHub/owaspzapodoogauge",
+	"/Users/jeremy/Documents/GitHub/owaspzapodoogauge/specs"
+]

@@ -1,10 +1,14 @@
 package net.oktaliem;
 
+import com.thoughtworks.gauge.Step;
+import net.oktaliem.utils.driver.Driver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
 import java.util.concurrent.TimeUnit;
+
+import static net.oktaliem.Path.BASE_URL_ODOO;
 
 
 public class OdooERP {
@@ -19,6 +23,9 @@ public class OdooERP {
     public void navigateToLoginPage(String url) {
         driver.get(url);
     }
+
+
+
 
     public void navigateToDatabaseManagerPage(String url) {
         driver.get(url);
