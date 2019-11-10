@@ -13,7 +13,7 @@ IntelliJ
 ```
 
 
-## Gauge
+## Gauge - Test Automation Framework
 Gauge is a light-weight cross-platform test automation tool with the ability to author test cases in the business language.
 ```
 https://docs.gauge.org/getting_started/installing-gauge.html?os=macos&language=java&ide=intellij
@@ -34,13 +34,13 @@ screenshot (0.0.1)
 
 ```
 
-## OWASP ZAP
+## OWASP ZAP - Security/Penetration Testing Tool
 The OWASP Zed Attack Proxy (ZAP) is one of the world’s most popular free security tools and is actively maintained by hundreds of international volunteers*. It can help you automatically find security vulnerabilities in your web applications while you are developing and testing your applications. Its also a great tool for experienced pentesters to use for manual security testing.
 ```
 brew cask install owasp-zap
 ```
 
-## Odoo
+## Odoo - System Under Test
 Odoo is an (Open Source ERP & CRM) all-in-one business software including CRM, website/e-commerce, billing, accounting, manufacturing, warehouse - and project management, and inventory.
 ```
 https://hub.docker.com/r/bitnami/odoo/
