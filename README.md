@@ -25,8 +25,6 @@ IntelliJ
 
 ## Gauge - Test Automation Framework
 Gauge is a light-weight cross-platform test automation tool with the ability to author test cases in the business language.
-Gauge is another alternative framework to write a test via specification without gerkhin langunge 
-(i.e Cucumber/JBehave)
 
 ```
 https://gauge.org/
@@ -72,6 +70,8 @@ $ docker-compose up -d
 
 ## Project Folders
 ```
+Gauge is another alternative framework to write a test via specification without gerkhin langunge 
+(i.e Cucumber/JBehave)
 https://docs.gauge.org/writing-specifications.html?os=macos&language=java&ide=intellij
 
 Gauge Test
