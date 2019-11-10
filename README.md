@@ -1,5 +1,5 @@
 # OWASPZAPOdooGauge
-Demo Automated Security/Penetration testing with OWASP ZAP + Selenium + TestNG + Gauge + Java + Maven + Odoo.
+Automated Security/Penetration testing demo with OWASP ZAP + Selenium + TestNG + Gauge + Java + Maven + Odoo.
 This repository has 2 ways to run the test :
 - run it via TestNG framework
 - run it via Gauge framework
