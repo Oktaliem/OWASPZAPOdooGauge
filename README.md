@@ -4,9 +4,6 @@ This repository has 2 ways to run the test :
 - run it via TestNG framework
 - run it via Gauge framework
 
-Gauge is another alternative framework to write a test via specification without gerkhin langunge 
-(i.e Cucumber/JBehave)
-
 # Purpose
 - This demo/repository is to provide example or framework/model that QA can be integrated as a part of CICD -DevSecOps.
 ```
@@ -28,6 +25,9 @@ IntelliJ
 
 ## Gauge - Test Automation Framework
 Gauge is a light-weight cross-platform test automation tool with the ability to author test cases in the business language.
+Gauge is another alternative framework to write a test via specification without gerkhin langunge 
+(i.e Cucumber/JBehave)
+
 ```
 https://gauge.org/
 https://docs.gauge.org/getting_started/installing-gauge.html?os=macos&language=java&ide=intellij
