@@ -41,7 +41,7 @@ brew cask install owasp-zap
 ```
 
 ## Odoo
-Odoo is an all-in-one business software including CRM, website/e-commerce, billing, accounting, manufacturing, warehouse - and project management, and inventory.
+Odoo is an (Open Source ERP & CRM) all-in-one business software including CRM, website/e-commerce, billing, accounting, manufacturing, warehouse - and project management, and inventory.
 ```
 https://hub.docker.com/r/bitnami/odoo/
 
