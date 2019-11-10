@@ -9,6 +9,9 @@ Gauge is another alternative framework to write a test via specification without
 
 # Purpose
 - This demo/repository is to provide example or framework/model that can be integrated in CICD QA-DevSecOps.
+```
+https://www.redhat.com/en/topics/devops/what-is-devsecops
+```
 - Eveybody can check out from this repository, run in their own local and learn security/penetration testing as a proof of concept.
 
 # Statement
