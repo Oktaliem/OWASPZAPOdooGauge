@@ -6,6 +6,16 @@ This repository has 2 ways to run the test :
 
 Gauge is another alternative framework to write a test via specification without gerkhin langunge (Cucumber)
 
+# Purpose
+- This demo/repository is to provide example or framework model that can be integrated in CI CD DevSecOPs.
+- Eveybody can check out from this repository, run in their own local machine and learn security/penetration testing as a proof of concept.
+
+# Statement
+The author of this repository is not expert in penetration testing.
+If you have any idea, suggestion or something that can be improved.
+Nice to talk!! Sharing is caring.
+
+
 # Environment
 ```
 MacOs/linux
@@ -44,6 +54,7 @@ $ brew cask install owasp-zap
 
 ## Odoo - System Under Test
 Odoo is an (Open Source ERP & CRM) all-in-one business software including CRM, website/e-commerce, billing, accounting, manufacturing, warehouse - and project management, and inventory.
+Odoo will be used in this repository as web application target to find vulnerabilities.
 ```
 https://hub.docker.com/r/bitnami/odoo/
 
