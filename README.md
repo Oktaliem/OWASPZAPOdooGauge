@@ -29,8 +29,8 @@ IntelliJ
 ## Gauge - Test Automation Framework
 Gauge is a light-weight cross-platform test automation tool with the ability to author test cases in the business language.
 ```
+https://gauge.org/
 https://docs.gauge.org/getting_started/installing-gauge.html?os=macos&language=java&ide=intellij
-https://github.com/getgauge-examples/java-maven-selenium
 
 Installation : 
 $ brew install gauge
