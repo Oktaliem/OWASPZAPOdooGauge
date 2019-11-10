@@ -8,7 +8,7 @@ Gauge is another alternative framework to write a test via specification without
 (i.e Cucumber/JBehave)
 
 # Purpose
-- This demo/repository is to provide example or framework/model that can be integrated in CICD QA-DevSecOps.
+- This demo/repository is to provide example or framework/model that can be integrated as a part of CICD QA-DevSecOps.
 ```
 https://www.redhat.com/en/topics/devops/what-is-devsecops
 ```
