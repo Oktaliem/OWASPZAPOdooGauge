@@ -12,7 +12,6 @@ MacOs/linux
 IntelliJ
 ```
 
-
 ## Gauge - Test Automation Framework
 Gauge is a light-weight cross-platform test automation tool with the ability to author test cases in the business language.
 ```
@@ -40,7 +39,7 @@ The OWASP Zed Attack Proxy (ZAP) is one of the world’s most popular free secur
 https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project
 https://github.com/zaproxy/zaproxy/wiki/Downloads
 
-brew cask install owasp-zap
+$ brew cask install owasp-zap
 ```
 
 ## Odoo - System Under Test
@@ -72,17 +71,17 @@ OdooScanTest.java
 
 ## Run the Test Via Command Line - TestNG
 ```
-mvn clean test -DsuitXmlFile=TestNG.xml
+$ mvn clean test -DsuitXmlFile=TestNG.xml
 ```
 
 ## Run the Test Via Command Line - Gauge
 ```
-mvn gauge:execute
+$ mvn gauge:execute
 ```
 
 ## Run the Test Via Command Line - Both Framework
 ```
-mvn clean test
+$ mvn clean test
 ```
 
 ## Report - OWASP ZAP
