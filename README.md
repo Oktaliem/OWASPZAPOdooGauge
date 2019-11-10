@@ -74,7 +74,7 @@ mvn clean test -Dclass=OdooScanTest
 
 ## Run the Test Via Command Line - Gauge
 ```
-mvn gauge:execute -DspecsDir=specs
+mvn gauge:execute
 ```
 
 ## Run the Test Via Command Line - Both Framework
