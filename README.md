@@ -69,7 +69,7 @@ OdooScanTest.java
 
 ## Run the Test Via Command Line - TestNG
 ```
-mvn clean test -Dclass=OdooScanTest
+mvn clean test -DsuitXmlFile=TestNG.xml
 ```
 
 ## Run the Test Via Command Line - Gauge
