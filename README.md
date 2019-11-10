@@ -7,13 +7,13 @@ This repository has 2 ways to run the test :
 Gauge is another alternative framework to write a test via specification without gerkhin langunge (Cucumber)
 
 # Purpose
-- This demo/repository is to provide example or framework model that can be integrated in CI CD DevSecOPs.
-- Eveybody can check out from this repository, run in their own local machine and learn security/penetration testing as a proof of concept.
+- This demo/repository is to provide example or framework/model that can be integrated in CICD QA-DevSecOps.
+- Eveybody can check out from this repository, run in their own local and learn security/penetration testing as a proof of concept.
 
 # Statement
 The author of this repository is not expert in penetration testing.
 If you have any idea, suggestion or something that can be improved.
-Nice to talk!! Sharing is caring.
+Nice to talk!! Sharing is caring. Let's learn together....
 
 
 # Environment
