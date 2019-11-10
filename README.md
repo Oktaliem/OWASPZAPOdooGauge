@@ -11,7 +11,7 @@ Gauge is another alternative framework to write a test via specification without
 - Eveybody can check out from this repository, run in their own local and learn security/penetration testing as a proof of concept.
 
 # Statement
-The author of this repository is not expert in penetration testing.
+The author of this repository is not subject expert matter in penetration testing.
 If you have any idea, suggestion or something that can be improved.
 Nice to talk!! Sharing is caring. Let's learn together....
 
