@@ -1,5 +1,5 @@
 # OWASPZAPOdooGauge
-Run Automated Security/Penetration testing with OWASP ZAP + Selenium + TestNG + Gauge + Java + Maven + Odoo
+Run Automated Security/Penetration testing with OWASP ZAP + Selenium + TestNG + Gauge + Java + Maven + Odoo.
 This repository has 2 ways to run the test :
 - run it via TestNG framework
 - run it via Gauge framework
@@ -75,4 +75,9 @@ mvn clean test -Dclass=OdooScanTest
 ## Run the Test Via Command Line - Gauge
 ```
 mvn gauge:execute -DspecsDir=specs
+```
+
+## Run the Test Via Command Line - Both Framework
+```
+mvn clean test
 ```
