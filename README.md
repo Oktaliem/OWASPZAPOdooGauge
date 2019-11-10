@@ -96,3 +96,8 @@ https://www.youtube.com/watch?v=Cymsg63eOP4
 ```
 [![CLICK HERE](![image](https://user-images.githubusercontent.com/26521948/68544724-3a6e3180-0401-11ea-9f03-49161ccefb7c.png)
 )](https://www.youtube.com/watch?v=Cymsg63eOP4)
+
+<a href="https://www.youtube.com/watch?v=Cymsg63eOP4" target="_blank"><img src="https://user-images.githubusercontent.com/26521948/68544724-3a6e3180-0401-11ea-9f03-49161ccefb7c.png" 
+alt="CLICK HERE" width="240" height="180" border="10" /></a>
+
+
