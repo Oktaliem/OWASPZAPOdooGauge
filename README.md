@@ -59,7 +59,7 @@ https://docs.gauge.org/writing-specifications.html?os=macos&language=java&ide=in
 
 Gauge Test
 specs : A specification is a business test case which describes a particular feature of the application that needs testing.
-reports : Gauge test report
+reports : Gauge test report (html)
 concepts : Concepts provide the ability to combine re-usable, logical groups of steps into a single unit.
 
 TestNG Test
