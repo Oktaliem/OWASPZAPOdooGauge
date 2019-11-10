@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="OrangeHRM Test Suite - Author : Okta Liem" >
+    <test name="OWASP ZAP Selenium Automated Test">
+        <classes>
+            <class name="net.oktaliem.OdooScanTest">
+                <methods>
+                    <include name="tc01_odooSecurityPassiveScanOnLoginPage"/>
+                    <include name="tc02_odooSecurityPassiveScanOnDatabaseManager"/>
+                    <include name="tc03_odooSecurityPassiveScanAfterLogin"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
