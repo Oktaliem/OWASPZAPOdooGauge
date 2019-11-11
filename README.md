@@ -9,7 +9,7 @@ This repository has 2 ways to run the test :
 ```
 https://www.redhat.com/en/topics/devops/what-is-devsecops
 ```
-- Eveybody can check out from this repository, run in their own local and learn security/penetration testing as a proof of concept.
+- Eveybody can clone/fork from this repository, run in their own local and learn security/penetration testing as a proof of concept.
 
 # Statement
 The author of this repository is not subject expert matter in penetration testing.
