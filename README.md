@@ -60,7 +60,7 @@ https://www.youtube.com/watch?v=b8M7Iha68I8
 ```
 
 ## Odoo - System Under Test
-Odoo is an (Open Source ERP & CRM) all-in-one business software including CRM, website/e-commerce, billing, accounting, manufacturing, warehouse - and project management, and inventory.
+Odoo is an (Open Source ERP) all-in-one business software including CRM, website/e-commerce, billing, accounting, manufacturing, warehouse - and project management, and inventory.
 Odoo will be used in this repository as web application target to find vulnerabilities.
 ```
 https://hub.docker.com/r/bitnami/odoo/
