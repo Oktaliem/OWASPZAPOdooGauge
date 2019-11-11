@@ -106,8 +106,9 @@ $ mvn clean test
 
 ## Report - OWASP ZAP
 i.e.
-Note : consider only the result that related to web app target (http://localhost/web/login/...)
+
 ![image](https://user-images.githubusercontent.com/26521948/68544654-6341f700-0400-11ea-9624-08bd58c335d5.png)
+Note : consider only the result that related to web app target (http://localhost/web/login/...)
 
 ## Report - GAUGE FRAMEWORK 
 i.e.
