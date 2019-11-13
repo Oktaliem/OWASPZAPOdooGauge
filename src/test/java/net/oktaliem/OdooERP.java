@@ -2,7 +2,6 @@ package net.oktaliem;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.testng.Assert;
 
 import java.util.concurrent.TimeUnit;
 
@@ -16,11 +15,7 @@ public class OdooERP {
         this.driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
     }
 
-    public void navigateToLoginPage(String url) {
-        driver.get(url);
-    }
-
-    public void navigateToDatabaseManagerPage(String url) {
+    public void navigateTo(String url) {
         driver.get(url);
     }
 
@@ -34,12 +29,11 @@ public class OdooERP {
 
 
     public String loginToOdoo(String url) {
-        navigateToLoginPage(url);
+        navigateTo(url);
         driver.findElement(By.id("login")).sendKeys("user@example.com");
         driver.findElement(By.id("password")).sendKeys("bitnami");
         driver.findElement(By.className("btn-primary")).click();
         wait(3000);
-        Assert.assertEquals(driver.getCurrentUrl(), "http://localhost/web#action=35&model=ir.module.module&view_type=kanban&cids=1&menu_id=5");
         String homePage = driver.getCurrentUrl();
         return homePage;
     }
