@@ -3,7 +3,28 @@ Created by oktaliem on 10/11/19
 This is a concept file with following syntax for each concept.
 # login
 * Landing to Odoo Login Page
-
+* Login with User Name and Password
+* Spider App with ZAP
+* Set Alert and Attack Strength
+* Set Enable Passive Scan
+* Scan App with ZAP
+* Remove False Positive
+* Generate HTML Report
 
 # database manager
 * Landing to Database Management Page
+* Spider App with ZAP
+* Set Alert and Attack Strength
+* Set Enable Passive Scan
+* Scan App with ZAP
+* Remove False Positive
+* Generate HTML Report
+
+# login page
+* Landing to Odoo Login Page
+* Spider App with ZAP
+* Set Alert and Attack Strength
+* Set Enable Passive Scan
+* Scan App with ZAP
+* Remove False Positive
+* Generate HTML Report

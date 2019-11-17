@@ -37,6 +37,7 @@ public class OdooScanTest extends ZapScannerBase {
         spiderOdooWithZap(homePage);
         setAlertAndAttackStrength();
         zapScanner.setEnablePassiveScan(true);
+        zapScanner.enableAllScanners();
         scanOdooWithZap(homePage);
         removeFalsePositive();
         writeHtmlReport("homePage.html");

@@ -1,5 +1,6 @@
 package net.oktaliem;
 
+import edu.umass.cs.benchlab.har.HarRequest;
 import net.continuumsecurity.proxy.ScanningProxy;
 import net.continuumsecurity.proxy.Spider;
 import net.continuumsecurity.proxy.ZAProxyScanner;
@@ -11,6 +12,7 @@ import org.testng.annotations.BeforeMethod;
 import org.zaproxy.clientapi.core.Alert;
 
 import java.io.IOException;
+import java.net.UnknownHostException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -37,7 +39,7 @@ public class ZapScannerBase {
     public ScanningProxy zapScanner;
     public Spider zapSpider;
     public WebDriver driver;
-    public OdooERP odoo;
+    public OdooERPSteps odoo;
     public int currentScanID;
 
     public static final String[] policyNames = {
@@ -70,7 +72,7 @@ public class ZapScannerBase {
         zapSpider = (Spider) zapScanner;
         log.info("Created client to ZAP API");
         driver = DriverFactory.createProxyDriver("chrome", createZapProxyConfigurationForWebDriver(), CHROME_DRIVER_PATH);
-        odoo = new OdooERP(driver);
+        odoo = new OdooERPSteps(driver);
     }
 
     @AfterMethod
@@ -206,11 +208,11 @@ public class ZapScannerBase {
     }
 
     public void spiderOdooWithZap(String targetURL) {
-        log.info("Spidering Odoo...");
+        log.info("Spidering Odoo..." + targetURL);
         zapSpider.excludeFromSpider(LOGOUT_URL);
-        zapSpider.setThreadCount(5);
-        zapSpider.setMaxDepth(5);
-        zapSpider.setPostForms(false);
+        zapSpider.setThreadCount(5); //default 5
+        zapSpider.setMaxDepth(5); //default 5
+        zapSpider.setPostForms(false); //default false
         zapSpider.spider(targetURL);
         int spiderID = zapSpider.getLastSpiderScanId();
         int complete = 0;
@@ -232,15 +234,56 @@ public class ZapScannerBase {
     public void writeHtmlReport(String fileName) throws IOException {
         byte[] html = zapScanner.getHtmlReport();
         Path pathToFile = Paths.get(System.getProperty("user.dir"));
-        System.out.println("logkodok: " + System.getProperty("user.dir"));
         Files.createDirectories(Paths.get(pathToFile + "/target/html"));
         Files.write(Paths.get(pathToFile + "/target/html/" + fileName), html);
+        log.info("HTML report is created");
+
     }
 
-    public void removeFalsePositive(){
+    public void removeFalsePositive() {
         List<Alert> alerts = filterAlerts(zapScanner.getAlerts());
         logAlerts(alerts);
         assertThat(alerts.size(), equalTo(0));
     }
+
+    public void allZAPSpiderMethods(){
+        zapSpider.spider(""); //used
+        zapSpider.setThreadCount(1); //used
+        zapSpider.setPostForms(true); //used
+        zapSpider.setMaxDepth(2); //used
+        zapSpider.getSpiderResults(1); //used
+        zapSpider.getSpiderProgress(1); //used
+        zapSpider.getLastSpiderScanId(); //used
+        zapSpider.excludeFromSpider(""); //used
+    }
+
+    public void allZAPScannerMethods() throws UnknownHostException {
+        zapScanner.setEnablePassiveScan(true);//used
+        zapScanner.shutdown();
+        zapScanner.setScannerAttackStrength("","");//used
+        zapScanner.setScannerAlertThreshold("","");//used
+        zapScanner.setEnableScanners("",true); //used
+        zapScanner.getXmlReport();
+        zapScanner.getScanProgress(2); //used
+        zapScanner.getLastScannerScanId(); //used
+        zapScanner.getAlerts(); //used
+        zapScanner.getAlerts(1,1);
+        zapScanner.getAlertsCount();
+        zapScanner.getHtmlReport(); //used
+        zapScanner.excludeFromScanner("");
+        zapScanner.enableAllScanners();
+        zapScanner.disableAllScanners();
+        zapScanner.deleteAlerts();
+        zapScanner.scan(""); //used
+        zapScanner.clear();//used
+        zapScanner.setEnableScanners("",true);//used
+        zapScanner.findInRequestHistory("");
+        zapScanner.findInResponseHistory("");
+        zapScanner.getHistory();
+        zapScanner.getHistoryCount();
+        zapScanner.getSeleniumProxy();
+        //zapScanner.makeRequest(HarRequest,true)
+    }
+
 
 }

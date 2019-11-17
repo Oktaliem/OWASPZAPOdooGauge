@@ -1,15 +1,17 @@
 package net.oktaliem;
 
+import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import java.util.concurrent.TimeUnit;
 
 
-public class OdooERP {
+public class OdooERPSteps {
     WebDriver driver;
+    public static Logger log = Logger.getLogger(OdooScanTest.class.getName());
 
-    public OdooERP(WebDriver driver) {
+    public OdooERPSteps(WebDriver driver) {
         this.driver = driver;
         this.driver.manage().timeouts().pageLoadTimeout(5, TimeUnit.SECONDS);
         this.driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
@@ -33,8 +35,9 @@ public class OdooERP {
         driver.findElement(By.id("login")).sendKeys("user@example.com");
         driver.findElement(By.id("password")).sendKeys("bitnami");
         driver.findElement(By.className("btn-primary")).click();
-        wait(3000);
+        wait(5000); //wait to all page loaded
         String homePage = driver.getCurrentUrl();
+        log.info("User has landing to: " + url);
         return homePage;
     }
 
