@@ -122,7 +122,7 @@ https://www.youtube.com/watch?v=Cymsg63eOP4
 alt="CLICK HERE" width="240" height="180" border="10" /></a>
 
 
-## Gauge Log
+## Testing Log
 
 <details>
 <summary>
@@ -131,6 +131,8 @@ CLICK ME
 <p>
  
 ```maven
+
+GAUGE LOG :
 
 [INFO] Scanning for projects...
 [WARNING] 
@@ -464,9 +466,7 @@ Total time taken: 1m51.694s
 
 ```
 
-
-
-## Gauge Log
+## TestNG Log
 
 <details>
 <summary>
