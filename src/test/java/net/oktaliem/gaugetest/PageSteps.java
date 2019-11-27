@@ -1,4 +1,4 @@
-package net.oktaliem.gauge;
+package net.oktaliem.gaugetest;
 
 import com.thoughtworks.gauge.Step;
 
@@ -16,7 +16,7 @@ public class PageSteps extends PageActions {
     String url = "";
 
     @Step("Landing to Odoo Login Page")
-    public void launchTheApplication() {
+    public void launchTheApplicationGauge() {
         driver.get(LOGIN_PAGE_URL);
         log.info("Landing to Login Page: " + LOGIN_PAGE_URL);
     }

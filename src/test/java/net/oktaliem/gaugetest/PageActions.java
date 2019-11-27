@@ -1,7 +1,7 @@
 /**
  * @Author Okta Liem
  */
-package net.oktaliem.gauge;
+package net.oktaliem.gaugetest;
 
 import net.continuumsecurity.proxy.Spider;
 import net.continuumsecurity.proxy.ZAProxyScanner;
@@ -11,9 +11,7 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.zaproxy.clientapi.core.Alert;
 
 import java.io.File;
@@ -53,7 +51,7 @@ public class PageActions extends Driver {
     /**
      * Wait consist of
      * - Wait
-     * - waitUntilElementIsVisible
+     * - waitForElementActionable
      */
 
     /**
@@ -228,15 +226,15 @@ public class PageActions extends Driver {
      * Verification
      */
 
-    public boolean checkIfElementIsVisible(WebElement element) {
-        try {
-            WebDriverWait wait = new WebDriverWait(driver, 3);
-            wait.until(ExpectedConditions.visibilityOf(element));
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
-    }
+//    public boolean checkIfElementIsVisible(WebElement element, int inSeconds) {
+//        try {
+//            WebDriverWait wait = new WebDriverWait(driver, inSeconds);
+//            wait.until(ExpectedConditions.visibilityOf(element));
+//            return true;
+//        } catch (Exception e) {
+//            return false;
+//        }
+//    }
 
     public void checkIfTextIsExpected(WebElement element, String expected) {
         Assert.assertEquals(element.getText(), expected);
@@ -248,7 +246,7 @@ public class PageActions extends Driver {
      * Wait actions
      */
 
-    public void wait(int milisecond) {
+    public void waitInMilSec(int milisecond) {
         try {
             //Thread.sleep(milisecond);
             TimeUnit.MILLISECONDS.sleep(milisecond);
@@ -258,10 +256,15 @@ public class PageActions extends Driver {
         log.info("User waits for " + milisecond + " milliseconds");
     }
 
-    public void waitUntilElementIsVisible(WebElement el, int time) {
-        WebDriverWait wait = new WebDriverWait(driver, time);
-        wait.until(ExpectedConditions.visibilityOf(el));
-    }
+//    public void waitForElementActionable(WebElement element, int time) {
+//        WebDriverWait wait = new WebDriverWait(driver, time);
+//        //wait.until(ExpectedConditions.visibilityOf(element));
+//        wait.until(ExpectedConditions.or(
+//                ExpectedConditions.visibilityOf(element),
+//                ExpectedConditions.elementToBeClickable(element),
+//                ExpectedConditions.presenceOfElementLocated((By) element),
+//                ExpectedConditions.elementToBeSelected(element)));
+//    }
 
 
     /**

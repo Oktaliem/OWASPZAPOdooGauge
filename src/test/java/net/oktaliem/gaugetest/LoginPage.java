@@ -1,4 +1,4 @@
-package net.oktaliem.gauge;
+package net.oktaliem.gaugetest;
 
 import com.thoughtworks.gauge.Step;
 import org.openqa.selenium.By;
@@ -15,6 +15,6 @@ public class LoginPage extends PageActions {
         inputTextBox(userNameLogin, "user@example.com");
         inputTextBox(passwordLogin, "bitnami");
         clickOn(loginButton);
-        wait(3000);
+        waitInMilSec(3000);
     }
 }

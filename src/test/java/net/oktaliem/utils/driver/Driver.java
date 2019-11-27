@@ -24,7 +24,7 @@ public class Driver {
     public OdooERPSteps odoo;
     public int currentScanID;
     public static final String CHROME_DRIVER_PATH = "drivers/chromedriver-mac";
-    public static Logger log = Logger.getLogger(OdooScanTest.class.getName());
+    public static Logger log = Logger.getLogger("GAUGE");
 
     public static WebDriver driver;
 
