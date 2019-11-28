@@ -13,25 +13,29 @@ public class LoginPage extends BasePage {
 
     public LoginPage(WebDriver driver) {
         super(driver);
-        PageFactory.initElements(driver,this);
+        PageFactory.initElements(driver, this);
     }
 
-    By userNameLogin = By.id("login");
-    By passwordLogin = By.id("password");
-    By loginButton = By.className("btn-primary");
+    private By userNameLogin = By.id("login");
+    private By passwordLogin = By.id("password");
+    private By loginButton = By.className("btn-primary");
+    private By DBManage = By.className("border-right");
+
 
     @FindBy(id = "login")
-    WebElement userName;
+    private WebElement userName;
 
     @FindBy(id = "password")
-    WebElement password;
+    private WebElement password;
 
     @FindBy(className = "btn-primary")
-    WebElement loginBtn;
+    private WebElement loginBtn;
 
     @FindBy(className = "o_menu_brand")
-    WebElement pageHeader;
+    private WebElement pageHeader;
 
+    @FindBy(className = "border-right")
+    private WebElement manageDB;
 
     @Step("Go to Odoo Login Page")
     public void launchTheApplication() {
@@ -56,9 +60,20 @@ public class LoginPage extends BasePage {
 
     @Step("Landing to Discuss Page")
     public void landingToDiscussPagePF() {
-       // checkIfElementIsVisible(pageHeader,10);
-       // waitForElementActionable(pageHeader,10);
-
-
+        // checkIfElementIsVisible(pageHeader,10);
+        // waitForElementActionable(pageHeader,10);
     }
+
+    @Step("Get Text sample Page Factory")
+    public void getTextSamplePF() {
+        String text = getTextFromElement(manageDB);
+        checkIfTextIsExpected(manageDB, text);
+    }
+
+    @Step("Get Text sample Page Object")
+    public void getTextSamplePO() {
+        String text = getTextFromElement(DBManage);
+        checkIfTextIsExpected(DBManage,text);
+    }
+
 }

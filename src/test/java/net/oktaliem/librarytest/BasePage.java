@@ -1,6 +1,5 @@
 package net.oktaliem.librarytest;
 
-import net.oktaliem.OdooScanTest;
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 import org.junit.Assert;
@@ -85,7 +84,6 @@ public class BasePage {
         String text = driver.findElement(el).getText();
         log.info("Get Text with value: " + text);
         return text;
-
     }
 
     public void selectOnDropDownListByText(By el, String text) {
@@ -215,7 +213,7 @@ public class BasePage {
 
 
     /**
-     * Verification
+     * Verification - Page Factory
      */
 
 //    public boolean checkIfElementIsVisible(WebElement element, int inSeconds) {
@@ -230,7 +228,16 @@ public class BasePage {
 
     public void checkIfTextIsExpected(WebElement element, String expected) {
         Assert.assertEquals(element.getText(), expected);
-        log.info("Text is expected");
+        log.info("Text is expected: "+ expected);
+    }
+
+    /**
+     * Verification - Page Object
+     */
+
+    public void checkIfTextIsExpected(By el, String expected) {
+        Assert.assertEquals(driver.findElement(el).getText(), expected);
+        log.info("Text is expected: "+ expected);
     }
 
 

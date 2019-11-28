@@ -33,4 +33,27 @@ public class UnitTest extends BaseTest{
         loginPage.wait(2000);
     }
 
+    @Test(description = "Page Factory - Get and Verify Text")
+    public void TC05(){
+        loginPage.launchTheApplication();
+        loginPage.getTextSamplePF();
+    }
+
+    @Test(description = "Page Object - Get and Verify Text")
+    public void TC06(){
+        loginPage.launchTheApplication();
+        loginPage.getTextSamplePO();
+    }
+
+    @Test(description = "General - Go back and go forward on web page")
+    public void TC_07(){
+        loginPage.launchTheApplication();
+        loginPage.wait(3000);
+        loginPage.goBack();
+        loginPage.wait(3000);
+        loginPage.goForward();
+        loginPage.wait(3000);
+    }
+
+
 }
