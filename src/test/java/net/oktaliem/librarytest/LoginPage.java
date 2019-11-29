@@ -9,7 +9,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import static net.oktaliem.Path.LOGIN_PAGE_URL;
 
-public class LoginPage extends BasePage {
+public class LoginPage extends HeaderComponent {
 
     public LoginPage(WebDriver driver) {
         super(driver);
@@ -76,4 +76,10 @@ public class LoginPage extends BasePage {
         checkIfTextIsExpected(DBManage,text);
     }
 
+    @Step("Login with Javascript Btn")
+    public void login() {
+        inputTextBox(userNameLogin, "user@example.com");
+        inputTextBox(passwordLogin, "bitnami");
+        clickViaJavascriptExecutor(loginBtn);
+    }
 }

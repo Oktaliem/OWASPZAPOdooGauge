@@ -2,6 +2,8 @@ package net.oktaliem.librarytest;
 
 import org.testng.annotations.Test;
 
+import java.io.IOException;
+
 public class UnitTest extends BaseTest{
 
     @Test(description ="Page Factory - login ")
@@ -27,9 +29,9 @@ public class UnitTest extends BaseTest{
     public void TC04(){
         loginPage.launchTheApplication();
         loginPage.openNewTab();
-        loginPage.switchToSecondBrowserTab();
+        loginPage.switchToSecondBrowser();
         loginPage.wait(3000);
-        loginPage.switchToFirstBrowserTab();
+        loginPage.switchToFirstBrowser();
         loginPage.wait(2000);
     }
 
@@ -55,5 +57,41 @@ public class UnitTest extends BaseTest{
         loginPage.wait(3000);
     }
 
+    @Test(description = "General - Click via Javascript")
+    public void TC08(){
+        loginPage.launchTheApplication();
+        loginPage.login();
+    }
+
+    @Test(description = "General - Get HTML source")
+    public void TC09() throws IOException {
+        loginPage.launchTheApplication();
+        loginPage.getHtmlSource("loginPage");
+    }
+
+    @Test(description = "Page Factory - Dropdown Test")
+    public void TC10() {
+        loginPage.launchTheApplication();
+        loginPage.login();
+        loginPage.openDropDownMenu();
+        loginPage.goToSettingPagePF();
+    }
+
+    @Test(description = "Page Object - Dropdown Test")
+    public void TC11() {
+        loginPage.launchTheApplication();
+        loginPage.login();
+        loginPage.openDropDownMenu();
+        loginPage.goToSettingPagePO();
+    }
+
+    @Test(description = "Page Factory - Select CheckBox")
+    public void TC12(){
+        loginPage.launchTheApplication();
+        loginPage.login();
+        loginPage.openDropDownMenu();
+        loginPage.goToSettingPagePO();
+        settingPage.selectAllName();
+    }
 
 }

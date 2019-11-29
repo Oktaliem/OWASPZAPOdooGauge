@@ -10,6 +10,8 @@ import java.util.concurrent.TimeUnit;
 public class BaseTest {
     public WebDriver driver ;
     public LoginPage loginPage;
+    public HeaderComponent headerComponent;
+    public SettingPage settingPage;
 
     @BeforeMethod
     public void initialization(){
@@ -18,8 +20,10 @@ public class BaseTest {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-        //driver.get(LOGIN_PAGE_URL);
         loginPage = new LoginPage(driver);
+        headerComponent = new HeaderComponent(driver);
+        settingPage = new SettingPage(driver);
+
     }
 
     @AfterMethod
