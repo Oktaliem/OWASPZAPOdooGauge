@@ -16,6 +16,11 @@ The author of this repository is not subject expert matter in penetration testin
 If you have any idea, suggestion or something that can be improved.
 Nice to talk!! Sharing is caring. Let's learn together....
 
+## Obstacle
+```
+This library/demo still unable to spidering sites & links after login if web application contains authentication token such as CSRF,etc during form login submission.
+
+```
 
 # Environment
 ```
@@ -848,9 +853,5 @@ Tests run: 7, Failures: 1, Errors: 0, Skipped: 0
 [ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
 
 ```
-## Obstacle
-```
-This library/demo still unable to spidering sites & links after login if web application contains authentication token such as CSRF,etc during form login submission.
 
-```
 
