@@ -1,6 +1,7 @@
-package net.oktaliem.librarytest;
+package net.oktaliem.librarytest.pages;
 
 import com.thoughtworks.gauge.Step;
+import net.oktaliem.librarytest.pages.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -8,7 +9,7 @@ import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
-public class HeaderComponent extends BasePage{
+public class HeaderComponent extends BasePage {
 
     public HeaderComponent(WebDriver driver) {
         super(driver);
@@ -22,7 +23,7 @@ public class HeaderComponent extends BasePage{
 
     @Step("Open Drop Down Menu")
     public void openDropDownMenu(){
-        clickOn(menuBtn);
+        clickOnWebButton(menuBtn);
     }
 
     @Step("Open Setting Page - Page Factory")

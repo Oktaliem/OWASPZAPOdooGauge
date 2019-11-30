@@ -1,4 +1,4 @@
-package net.oktaliem.librarytest;
+package net.oktaliem.librarytest.pages;
 
 import com.thoughtworks.gauge.Step;
 import org.openqa.selenium.By;
@@ -47,7 +47,7 @@ public class LoginPage extends HeaderComponent {
     public void loginSamplePF() {
         inputTextBox(userName, "test");
         inputTextBox(password, "test");
-        clickOn(loginBtn);
+        clickOnWebButton(loginBtn);
     }
 
     @Step("Page Object - Login")
@@ -55,7 +55,7 @@ public class LoginPage extends HeaderComponent {
         inputTextBox(userNameLogin, "test");
         inputTextBox(passwordLogin, "test");
         wait(5000);
-        clickOn(loginButton);
+        clickOnWebButton(loginButton);
     }
 
     @Step("Landing to Discuss Page")

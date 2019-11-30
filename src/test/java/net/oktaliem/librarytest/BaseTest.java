@@ -1,5 +1,6 @@
 package net.oktaliem.librarytest;
 
+import net.oktaliem.librarytest.pages.User;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
@@ -9,9 +10,8 @@ import java.util.concurrent.TimeUnit;
 
 public class BaseTest {
     public WebDriver driver ;
-    public LoginPage loginPage;
-    public HeaderComponent headerComponent;
-    public SettingPage settingPage;
+    public User user;
+
 
     @BeforeMethod
     public void initialization(){
@@ -20,10 +20,7 @@ public class BaseTest {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-        loginPage = new LoginPage(driver);
-        headerComponent = new HeaderComponent(driver);
-        settingPage = new SettingPage(driver);
-
+        user = new User(driver);
     }
 
     @AfterMethod

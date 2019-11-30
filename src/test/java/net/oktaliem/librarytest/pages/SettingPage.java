@@ -1,6 +1,7 @@
-package net.oktaliem.librarytest;
+package net.oktaliem.librarytest.pages;
 
 import com.thoughtworks.gauge.Step;
+import net.oktaliem.librarytest.pages.HeaderComponent;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
