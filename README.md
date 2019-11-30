@@ -848,3 +848,9 @@ Tests run: 7, Failures: 1, Errors: 0, Skipped: 0
 [ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
 
 ```
+## Obstacle
+```
+This library/demo still unable to spidering sites & links after login if web application contains authentication token such as CSRF,etc during form login submission.
+
+```
+
