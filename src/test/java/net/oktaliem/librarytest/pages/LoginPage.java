@@ -6,6 +6,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
+
+import java.io.IOException;
 
 import static net.oktaliem.Path.LOGIN_PAGE_URL;
 
@@ -86,5 +89,17 @@ public class LoginPage extends HeaderComponent {
     @Step("Login URL")
     public void getLoginPageURL() {
         getCurrentURL();
+    }
+
+    @Step("value or Regex")
+    public void getCSRFToken() throws IOException {
+        String text = readFile(System.getProperty("user.dir")+
+                    "/src/main/resources/actualhtmltext/loginPage.txt");
+        String pattern = "csrf_token: \"\\w{41}\"";
+        String values = getValueWithRegex(pattern, text);
+        String value = values.substring(values.length() - 42, values.length() - 1);
+        Assert.assertEquals(value, "01122a113f7377a85655c778b1143914eaa38884o");
+        log.info("Regex Result: " + values);
+        log.info("Result: " + value);
     }
 }

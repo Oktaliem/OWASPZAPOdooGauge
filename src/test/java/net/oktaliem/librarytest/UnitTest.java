@@ -101,5 +101,11 @@ public class UnitTest extends BaseTest{
         user.loginPage().getLoginPageURL();
     }
 
+    @Test(description = "General - Ge Value with Regex")
+    public void TC14() throws IOException {
+        user.loginPage().launchTheApplication();
+        user.loginPage().getCSRFToken();
+    }
+
 
 }

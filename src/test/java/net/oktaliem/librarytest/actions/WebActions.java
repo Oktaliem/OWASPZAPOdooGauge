@@ -54,4 +54,5 @@ public interface WebActions {
     void uploadFile(WebElement element, String fileName);
     String getCurrentURL();
     void handleJavascriptPopUp(String info);
+    String readFile(String filePath) throws IOException;
 }
