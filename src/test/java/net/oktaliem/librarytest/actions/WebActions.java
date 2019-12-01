@@ -43,8 +43,8 @@ public interface WebActions {
 
     /** General Actions **/
     void refreshPage();
-    void goBack();
-    void goForward();
+    void goToPreviousPage();
+    void goToNextPage();
     void getHtmlSource(String fileName) throws IOException;
     void clickViaJavascriptExecutor(WebElement el);
     void openNewTab();

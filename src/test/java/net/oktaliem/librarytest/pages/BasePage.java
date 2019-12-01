@@ -279,13 +279,13 @@ public class BasePage implements WebActions {
     }
 
     @Override
-    public void goBack() {
+    public void goToPreviousPage() {
         driver.navigate().back();
         log.info("Back to previous page");
     }
 
     @Override
-    public void goForward() {
+    public void goToNextPage() {
         driver.navigate().forward();
         log.info("Go to next page");
     }

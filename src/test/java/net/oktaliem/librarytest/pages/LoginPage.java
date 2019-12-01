@@ -73,7 +73,7 @@ public class LoginPage extends HeaderComponent {
     @Step("Get Text sample Page Object")
     public void getTextSamplePO() {
         String text = getTextFromElement(DBManage);
-        checkIfTextIsExpected(DBManage,text);
+        checkIfTextIsExpected(DBManage, text);
     }
 
     @Step("Login with Javascript Btn")
@@ -81,5 +81,10 @@ public class LoginPage extends HeaderComponent {
         inputTextBox(userNameLogin, "user@example.com");
         inputTextBox(passwordLogin, "bitnami");
         clickViaJavascriptExecutor(loginBtn);
+    }
+
+    @Step("Login URL")
+    public void getLoginPageURL() {
+        getCurrentURL();
     }
 }

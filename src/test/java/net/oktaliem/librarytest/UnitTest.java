@@ -51,9 +51,9 @@ public class UnitTest extends BaseTest{
     public void TC_07(){
         user.loginPage().launchTheApplication();
         user.loginPage().wait(3000);
-        user.loginPage().goBack();
+        user.loginPage().goToPreviousPage();
         user.loginPage().wait(3000);
-        user.loginPage().goForward();
+        user.loginPage().goToNextPage();
         user.loginPage().wait(3000);
     }
 
@@ -93,5 +93,13 @@ public class UnitTest extends BaseTest{
         user.loginPage().goToSettingPagePO();
         user.settingPage().selectAllName();
     }
+
+    @Test(description = "General - Get Login Page URL")
+    public void TC13(){
+        user.loginPage().launchTheApplication();
+        user.loginPage().login();
+        user.loginPage().getLoginPageURL();
+    }
+
 
 }

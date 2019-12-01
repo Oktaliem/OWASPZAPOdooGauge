@@ -1,7 +1,6 @@
 package net.oktaliem.librarytest.pages;
 
 import com.thoughtworks.gauge.Step;
-import net.oktaliem.librarytest.pages.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -30,6 +29,7 @@ public class HeaderComponent extends BasePage {
     public void goToSettingPagePF(){
         selectOnDropDownListByText(Setting,"Settings");
     }
+
     @Step("Open Setting Page - Page Object")
     public void goToSettingPagePO() {
         selectOnDropDownListByText(setting,"Settings");
