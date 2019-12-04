@@ -22,7 +22,7 @@ public class HeaderComponent extends BasePage {
 
     @Step("Open Drop Down Menu")
     public void openDropDownMenu(){
-        clickOnWebButton(menuBtn);
+        clickOn(menuBtn);
     }
 
     @Step("Open Setting Page - Page Factory")

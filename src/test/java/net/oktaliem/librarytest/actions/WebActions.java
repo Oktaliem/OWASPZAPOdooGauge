@@ -11,7 +11,7 @@ public interface WebActions {
     // Inspired by Katalon Studio https://docs.katalon.com/katalon-studio/docs/webui-click.html#description
 
     /** Web Action - Page Object **/
-    void clickOnWebButton(By el);
+    void clickOn(By el);
     void inputTextBox(By el, String value);
     String getTextFromElement(By el);
     void selectOnDropDownListByText(By el, String text);
@@ -21,7 +21,7 @@ public interface WebActions {
     void selectCheckBox(By el, String status);
 
     /** Web Action - Page Factory **/
-    void clickOnWebButton(WebElement element);
+    void clickOn(WebElement element);
     void inputTextBox(WebElement element, String value);
     String getTextFromElement(WebElement element);
     void selectOnDropDownListByText(WebElement element, String text);
@@ -46,7 +46,7 @@ public interface WebActions {
     void goToPreviousPage();
     void goToNextPage();
     void getHtmlSource(String fileName) throws IOException;
-    void clickViaJavascriptExecutor(WebElement el);
+    void clickViaJavascriptExecutor(WebElement element);
     void openNewTab();
     void switchToSecondBrowser();
     void switchToFirstBrowser();
@@ -55,4 +55,24 @@ public interface WebActions {
     String getCurrentURL();
     void handleJavascriptPopUp(String info);
     String readFile(String filePath) throws IOException;
+    void scrollToBottomPage();
+    void scrollToTopPage();
+    void scrollUntilViewElement(By el);
+    void scrollUntilViewElement(WebElement element);
+
+
+    /** Keyboard & Mouse Action - Page Object */
+    void doubleClick(By el);
+    void moveMouseTo(By el);
+    void dragFromAndDropTo(By from,By to);
+
+    /** Keyboard & Mouse Action - Page Factory */
+    void doubleClick(WebElement element);
+    void moveMouseTo(WebElement element);
+    void dragFromAndDropTo(WebElement from,WebElement to);
+
+
+
+
+
 }

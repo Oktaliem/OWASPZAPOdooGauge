@@ -50,7 +50,7 @@ public class LoginPage extends HeaderComponent {
     public void loginSamplePF() {
         inputTextBox(userName, "test");
         inputTextBox(password, "test");
-        clickOnWebButton(loginBtn);
+        clickOn(loginBtn);
     }
 
     @Step("Page Object - Login")
@@ -58,7 +58,7 @@ public class LoginPage extends HeaderComponent {
         inputTextBox(userNameLogin, "test");
         inputTextBox(passwordLogin, "test");
         wait(5000);
-        clickOnWebButton(loginButton);
+        clickOn(loginButton);
     }
 
     @Step("Landing to Discuss Page")

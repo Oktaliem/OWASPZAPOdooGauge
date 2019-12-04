@@ -5,9 +5,10 @@ import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Action;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.UnexpectedTagNameException;
-
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -32,7 +33,7 @@ public class BasePage implements WebActions {
      */
 
     @Override
-    public void clickOnWebButton(By el) {
+    public void clickOn(By el) {
         WebElement element = driver.findElement(el);
         try {
             element.click();
@@ -66,7 +67,7 @@ public class BasePage implements WebActions {
             List<WebElement> elements = driver.findElements(el);
             for (WebElement element : elements) {
                 if (element.getText().trim().equals(text.trim())) {
-                    clickOnWebButton(element);
+                    clickOn(element);
                     log.info("Select Drop down List Element by visible text : " + text);
                     break;
                 }
@@ -86,7 +87,7 @@ public class BasePage implements WebActions {
     public void selectOnRadioButtonByText(By els, String text) {
         for (WebElement element : driver.findElements(els)) {
             if (element.getText().equals(text)) {
-                clickOnWebButton(element);
+                clickOn(element);
                 log.info("Select radio button by text: " + text);
                 break;
             }
@@ -97,7 +98,7 @@ public class BasePage implements WebActions {
     public void selectOnRadioButtonByValue(By els, String text) {
         for (WebElement element : driver.findElements(els)) {
             if (element.getAttribute("value").trim().equals(text.trim())) {
-                clickOnWebButton(element);
+                clickOn(element);
                 log.info("Select radio button by value: " + text);
                 break;
             }
@@ -109,7 +110,7 @@ public class BasePage implements WebActions {
         WebElement element = driver.findElement(el);
         if (status.equals("n")) {
             if (element.isSelected()) {
-                clickOnWebButton(element);
+                clickOn(element);
             } else {
                 log.info("check box is disabled by default");
             }
@@ -118,7 +119,7 @@ public class BasePage implements WebActions {
             if (element.isSelected()) {
                 log.info("check box is already enabled");
             } else {
-                clickOnWebButton(element);
+                clickOn(element);
             }
         }
     }
@@ -128,7 +129,7 @@ public class BasePage implements WebActions {
      * Page Factory for Page Actions
      */
     @Override
-    public void clickOnWebButton(WebElement element) {
+    public void clickOn(WebElement element) {
         try {
             element.click();
             log.info("User clicks On Element: " + element);
@@ -162,7 +163,7 @@ public class BasePage implements WebActions {
     public void selectOnDropDownListByText(List<WebElement> elements, String text) {
         for (WebElement element : elements) {
             if (element.getText().trim().equals(text.trim())) {
-                clickOnWebButton(element);
+                clickOn(element);
                 log.info("Select Drop down List Element by visible text : " + text);
                 break;
             }
@@ -180,7 +181,7 @@ public class BasePage implements WebActions {
     public void selectOnRadioButtonByText(List<WebElement> elements, String text) {
         for (WebElement element : elements) {
             if (element.getText().trim().equals(text.trim())) {
-                clickOnWebButton(element);
+                clickOn(element);
                 log.info("Select radio button by text: " + text);
                 break;
             }
@@ -191,7 +192,7 @@ public class BasePage implements WebActions {
     public void selectOnRadioButtonByValue(List<WebElement> elements, String text) {
         for (WebElement element : elements) {
             if (element.getAttribute("value").trim().equals(text.trim())) {
-                clickOnWebButton(element);
+                clickOn(element);
                 log.info("Select radio button by value: " + text);
                 break;
             }
@@ -202,7 +203,7 @@ public class BasePage implements WebActions {
     public void selectCheckBox(WebElement element, String status) {
         if (status.equals("n")) {
             if (element.isSelected()) {
-                clickOnWebButton(element);
+                clickOn(element);
             } else {
                 log.info("check box is disabled by default");
             }
@@ -211,7 +212,7 @@ public class BasePage implements WebActions {
             if (element.isSelected()) {
                 log.info("check box is already enabled");
             } else {
-                clickOnWebButton(element);
+                clickOn(element);
             }
         }
     }
@@ -302,11 +303,11 @@ public class BasePage implements WebActions {
     }
 
     @Override
-    public void clickViaJavascriptExecutor(WebElement el) {
+    public void clickViaJavascriptExecutor(WebElement element) {
         log.warn("Element is not clickable, try to click with Javascript");
         JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("arguments[0].click();", el);
-        log.info("click on " + el + " via javascript succeed");
+        js.executeScript("arguments[0].click();", element);
+        log.info("click on " + element + " via javascript succeed");
     }
 
     @Override
@@ -389,4 +390,85 @@ public class BasePage implements WebActions {
             br.close();
         }
     }
+
+    @Override
+    public void doubleClick(By el) {
+        WebElement element = driver.findElement(el);
+        Actions action = new Actions(driver);
+        action.doubleClick(element).perform();
+    }
+
+    @Override
+    public void doubleClick(WebElement element) {
+        Actions action = new Actions(driver);
+        action.doubleClick(element).perform();
+    }
+
+    @Override
+    public void moveMouseTo(WebElement element) {
+        Actions action = new Actions(driver);
+        action.moveToElement(element).perform();
+    }
+
+    @Override
+    public void moveMouseTo(By el) {
+        WebElement element = driver.findElement(el);
+        Actions action = new Actions(driver);
+        action.moveToElement(element).perform();
+    }
+
+    @Override
+    public void dragFromAndDropTo(By from, By to) {
+        WebElement dragFrom = driver.findElement(from);
+        WebElement target = driver.findElement(to);
+        Actions builder = new Actions(driver);
+        Action dragAndDrop = builder.clickAndHold(dragFrom)
+                .moveToElement(target)
+                .release(target)
+                .build();
+        dragAndDrop.perform();
+    }
+
+
+    @Override
+    public void dragFromAndDropTo(WebElement from, WebElement to) {
+        Actions builder = new Actions(driver);
+        Action dragAndDrop = builder.clickAndHold(from)
+                .moveToElement(to)
+                .release(to)
+                .build();
+        dragAndDrop.perform();
+    }
+
+    @Override
+    public void scrollToBottomPage() {
+        JavascriptExecutor jsExecutor =  (JavascriptExecutor)driver;
+        String query = "window.scrollTo(0,document.body.scrollHeight);";
+        jsExecutor.executeScript(query);
+    }
+
+    @Override
+    public void scrollToTopPage() {
+        JavascriptExecutor jsExecutor =  (JavascriptExecutor)driver;
+        String query = "document.location.href = ‘#top’;";
+        jsExecutor.executeScript(query);
+    }
+
+    @Override
+    public void scrollUntilViewElement(By el) {
+        JavascriptExecutor jsExecutor =  (JavascriptExecutor)driver;
+        WebElement element = driver.findElement(el);
+        String query = "arguments[0].scrollIntoView(true);";
+        jsExecutor.executeScript(query, element);
+
+    }
+
+    @Override
+    public void scrollUntilViewElement(WebElement element) {
+        JavascriptExecutor jsExecutor =  (JavascriptExecutor)driver;
+        String query = "arguments[0].scrollIntoView(true);";
+        jsExecutor.executeScript(query, element);
+    }
+
+
 }
