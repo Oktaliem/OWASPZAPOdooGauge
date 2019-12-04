@@ -11,6 +11,7 @@ import org.testng.Assert;
 import java.io.IOException;
 
 import static net.oktaliem.Path.LOGIN_PAGE_URL;
+import static net.oktaliem.Path.SELENIUM_WEB;
 
 public class LoginPage extends HeaderComponent {
 
@@ -42,8 +43,7 @@ public class LoginPage extends HeaderComponent {
 
     @Step("Go to Odoo Login Page")
     public void launchTheApplication() {
-        driver.get(LOGIN_PAGE_URL);
-        log.info("Landing to Login Page: " + LOGIN_PAGE_URL);
+        goToWeb(LOGIN_PAGE_URL);
     }
 
     @Step("Page Factory - Login")
@@ -98,8 +98,12 @@ public class LoginPage extends HeaderComponent {
         String pattern = "csrf_token: \"\\w{41}\"";
         String values = getValueWithRegex(pattern, text);
         String value = values.substring(values.length() - 42, values.length() - 1);
+
+        //This test is intended to fail
         Assert.assertEquals(value, "01122a113f7377a85655c778b1143914eaa38884o");
         log.info("Regex Result: " + values);
         log.info("Result: " + value);
     }
+
+
 }

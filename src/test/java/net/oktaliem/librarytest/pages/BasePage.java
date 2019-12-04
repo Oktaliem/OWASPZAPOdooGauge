@@ -1,6 +1,6 @@
 package net.oktaliem.librarytest.pages;
 
-import net.oktaliem.librarytest.actions.WebActions;
+import net.oktaliem.librarytest.webactions.*;
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 import org.junit.Assert;
@@ -20,7 +20,10 @@ import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class BasePage implements WebActions {
+import static net.oktaliem.Path.LOGIN_PAGE_URL;
+
+public class BasePage implements ElementActions, JSExecutorActions, MouseAndKeyboardActions, GeneralActions,
+        WaitActions, VerificationActions {
     public WebDriver driver;
     public static Logger log = Logger.getLogger("Library Test");
 
@@ -353,7 +356,7 @@ public class BasePage implements WebActions {
     public String getCurrentURL() {
         String url = driver.getCurrentUrl();
         log.info("Current URL is " + url);
-        return url;
+        return driver.getCurrentUrl();
     }
 
     @Override
@@ -375,6 +378,7 @@ public class BasePage implements WebActions {
 
     @Override
     public String readFile(String filePath) throws IOException {
+        log.info("Read File from: "+filePath);
         BufferedReader br = new BufferedReader(new FileReader(filePath));
         try {
             StringBuilder sb = new StringBuilder();
@@ -396,25 +400,29 @@ public class BasePage implements WebActions {
         WebElement element = driver.findElement(el);
         Actions action = new Actions(driver);
         action.doubleClick(element).perform();
+        log.info("Double Click element: " + element);
     }
 
     @Override
     public void doubleClick(WebElement element) {
         Actions action = new Actions(driver);
         action.doubleClick(element).perform();
+        log.info("Double Click element: " + element);
     }
 
     @Override
-    public void moveMouseTo(WebElement element) {
+    public void moveMousePointerTo(WebElement element) {
         Actions action = new Actions(driver);
         action.moveToElement(element).perform();
+        log.info("Move your mouse pointer to element: " + element);
     }
 
     @Override
-    public void moveMouseTo(By el) {
+    public void moveMousePointerTo(By el) {
         WebElement element = driver.findElement(el);
         Actions action = new Actions(driver);
         action.moveToElement(element).perform();
+        log.info("Move your mouse pointer to element: " + el);
     }
 
     @Override
@@ -427,6 +435,7 @@ public class BasePage implements WebActions {
                 .release(target)
                 .build();
         dragAndDrop.perform();
+        log.info("Drag from :" + from + " then drop to: " + to);
     }
 
 
@@ -438,37 +447,56 @@ public class BasePage implements WebActions {
                 .release(to)
                 .build();
         dragAndDrop.perform();
+        log.info("Drag from :" + from + " then drop to: " + to);
     }
 
     @Override
     public void scrollToBottomPage() {
-        JavascriptExecutor jsExecutor =  (JavascriptExecutor)driver;
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
         String query = "window.scrollTo(0,document.body.scrollHeight);";
         jsExecutor.executeScript(query);
+        log.info("Scroll to the buttom page");
     }
 
     @Override
     public void scrollToTopPage() {
-        JavascriptExecutor jsExecutor =  (JavascriptExecutor)driver;
-        String query = "document.location.href = ‘#top’;";
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+        String query = "window.scrollTo(0,-document.body.scrollHeight);";
         jsExecutor.executeScript(query);
+        log.info("Scroll to the top page");
     }
 
     @Override
     public void scrollUntilViewElement(By el) {
-        JavascriptExecutor jsExecutor =  (JavascriptExecutor)driver;
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
         WebElement element = driver.findElement(el);
         String query = "arguments[0].scrollIntoView(true);";
         jsExecutor.executeScript(query, element);
-
+        log.info("Scroll until element: " + element + " is displayed");
     }
 
     @Override
     public void scrollUntilViewElement(WebElement element) {
-        JavascriptExecutor jsExecutor =  (JavascriptExecutor)driver;
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
         String query = "arguments[0].scrollIntoView(true);";
         jsExecutor.executeScript(query, element);
+        log.info("Scroll until element: " + element + " is displayed");
     }
 
+    @Override
+    public void refreshPageViaJavaScriptExecutor() {
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+        jsExecutor.executeScript("history.go(0)");
+        //or
+        jsExecutor.executeScript("location.reload();");
+        log.info("refresh Page Via JavaScriptExecutor");
+    }
+
+
+    @Override
+    public void goToWeb(String url) {
+        driver.get(url);
+        log.info("Landing to Login Page: " + url);
+    }
 
 }

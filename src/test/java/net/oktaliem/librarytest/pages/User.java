@@ -10,7 +10,6 @@ public class User {
     }
 
     public LoginPage loginPage(){return new LoginPage(driver);}
-    public HeaderComponent headerComponent(){return new HeaderComponent(driver);}
     public SettingPage settingPage(){return new SettingPage(driver);}
-
+    public SeleniumPage seleniumPage(){return new SeleniumPage(driver);}
 }

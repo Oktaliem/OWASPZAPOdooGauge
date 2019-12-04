@@ -101,11 +101,59 @@ public class UnitTest extends BaseTest{
         user.loginPage().getLoginPageURL();
     }
 
-    @Test(description = "General - Ge Value with Regex")
+    @Test(description = "General - Get Value with Regex")
     public void TC14() throws IOException {
         user.loginPage().launchTheApplication();
         user.loginPage().getCSRFToken();
     }
 
 
+    @Test(description = "General - Scroll Up and Scroll Down ")
+    public void TC15(){
+        user.seleniumPage().goToSeleniumOfficialWeb();
+        user.seleniumPage().scrollToBottomPage();
+        user.seleniumPage().wait(3000);
+        user.seleniumPage().scrollToTopPage();
+        user.seleniumPage().wait(3000);
+    }
+
+    @Test(description = "Page Object - Scroll until view element")
+    public void TC16(){
+        user.seleniumPage().goToSeleniumOfficialWeb();
+        user.seleniumPage().gotToMoreNewsButtonPO();
+    }
+
+    @Test(description = "Page Factory - Scroll until view element")
+    public void TC17(){
+        user.seleniumPage().goToSeleniumOfficialWeb();
+        user.seleniumPage().gotToMoreNewsButtonPF();
+    }
+
+    @Test(description = "Page Factory - Double Click")
+    public void TC18(){
+        user.seleniumPage().goToSeleniumOfficialWeb();
+        user.seleniumPage().gotToMoreNewsButtonPF();
+        user.seleniumPage().doubleClickMoreNewsButtonPF();
+    }
+
+    @Test(description = "Page Object - Double Click")
+    public void TC19(){
+        user.seleniumPage().goToSeleniumOfficialWeb();
+        user.seleniumPage().gotToMoreNewsButtonPO();
+        user.seleniumPage().doubleClickMoreNewsButtonPO();
+    }
+
+    @Test(description = "Page Object - Move Mouse Pointer")
+    public void TC20(){
+        user.seleniumPage().goToSeleniumOfficialWeb();
+        user.seleniumPage().gotToMoreNewsButtonPO();
+        user.seleniumPage().movePointerToNewsButtonPO();
+    }
+
+    @Test(description = "Page Factory - Move Mouse Pointer")
+    public void TC21(){
+        user.seleniumPage().goToSeleniumOfficialWeb();
+        user.seleniumPage().gotToMoreNewsButtonPF();
+        user.seleniumPage().movePointerToNewsButtonPF();
+    }
 }

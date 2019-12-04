@@ -11,7 +11,7 @@
 
                 <script type="text/javascript">
                     var odoo = {
-                        csrf_token: "01122a113f7377a85655c778b1143914eaa38884o",
+                        csrf_token: "ae382d5d75f8477be639749eec3eb29133ad312do",
                         debug: "",
                     };
                 </script>
@@ -47,7 +47,7 @@
                         </div>
                         
             <form class="oe_login_form" role="form" method="post" onsubmit="this.action = this.action + location.hash" action="/web/login">
-                <input type="hidden" name="csrf_token" value="b8504a4a5ed8d7bac6ca6db027ff8a846c9bdbfao1575092495">
+                <input type="hidden" name="csrf_token" value="e008f370937809a557c501c308d20202b3ae9d2fo1575307328">
 
                 
 
