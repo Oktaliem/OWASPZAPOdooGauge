@@ -20,5 +20,8 @@ public interface GeneralActions {
     String getCurrentURL();
     String readFile(String filePath) throws IOException;
     void goToWeb(String url);
-
+    void switchToIframeByIndex(int index);
+    void switchToIframeByIdOrName(WebElement element);
+    void switchIframeToDefaultContent();
+    void switchIframeToParentFrame();
 }

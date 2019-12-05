@@ -6,6 +6,10 @@ import java.io.IOException;
 
 public class UnitTest extends BaseTest{
 
+    /**
+     * “If you have WebDriver APIs in your test methods, You're Doing It Wrong.” Simon Stewart
+     */
+
     @Test(description ="Page Factory - login ")
     public void TC01(){
         user.loginPage().launchTheApplication();
@@ -155,5 +159,17 @@ public class UnitTest extends BaseTest{
         user.seleniumPage().goToSeleniumOfficialWeb();
         user.seleniumPage().gotToMoreNewsButtonPF();
         user.seleniumPage().movePointerToNewsButtonPF();
+    }
+
+    @Test(description = "drag and drop action - Page Factory")
+    public void TC22(){
+        user.seleniumPage().goToW3SchoolDropAndDropPage();
+        user.seleniumPage().performDragAndDropPF();
+    }
+
+    @Test(description = "drag and drop action - Page Object")
+    public void TC23(){
+        user.seleniumPage().goToW3SchoolDropAndDropPage();
+        user.seleniumPage().performDragAndDropPO();
     }
 }

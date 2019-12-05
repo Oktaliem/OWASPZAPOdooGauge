@@ -6,4 +6,5 @@ public interface Path {
     String LOGOUT_URL = "http://localhost/web/session/logout";
 
     String SELENIUM_WEB = "https://selenium.dev/";
+    String W3SCHOOLDRAGANDDROP ="https://www.w3schools.com/html/tryit.asp?filename=tryhtml5_draganddrop2";
 }

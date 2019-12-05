@@ -20,10 +20,10 @@ import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static net.oktaliem.Path.LOGIN_PAGE_URL;
 
 public class BasePage implements ElementActions, JSExecutorActions, MouseAndKeyboardActions, GeneralActions,
         WaitActions, VerificationActions {
+
     public WebDriver driver;
     public static Logger log = Logger.getLogger("Library Test");
 
@@ -492,11 +492,34 @@ public class BasePage implements ElementActions, JSExecutorActions, MouseAndKeyb
         log.info("refresh Page Via JavaScriptExecutor");
     }
 
-
     @Override
     public void goToWeb(String url) {
         driver.get(url);
         log.info("Landing to Login Page: " + url);
+    }
+
+    @Override
+    public void switchToIframeByIndex(int index) {
+        driver.switchTo().frame(index);
+        log.info("Switch to iframe by index: " + index);
+    }
+
+    @Override
+    public void switchToIframeByIdOrName(WebElement element) {
+        driver.switchTo().frame(element);
+        log.info("Switch to iframe by id or name: " + element);
+    }
+
+    @Override
+    public void switchIframeToDefaultContent() {
+        driver.switchTo().defaultContent();
+        log.info("Switch to default content");
+    }
+
+    @Override
+    public void switchIframeToParentFrame() {
+        driver.switchTo().parentFrame();
+        log.info("Switch to parent frame");
     }
 
 }

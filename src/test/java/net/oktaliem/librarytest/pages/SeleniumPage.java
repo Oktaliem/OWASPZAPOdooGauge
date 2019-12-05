@@ -9,9 +9,16 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-import static net.oktaliem.Path.SELENIUM_WEB;
+import static net.oktaliem.Path.*;
 
 public class SeleniumPage extends BasePage {
+    /**
+     * Martin Flower :
+     * "1. A page object wraps an HTML page, or fragment, with an application-specific API, allowing you to manipulate page elements without digging around in the HTML."
+     * "2. A page object should also provide an interface that's easy to program to and hides the underlying widgetry in the window  page."
+     * "3. The page object should encapsulate the mechanics required to find and manipulate the data in the page itself. A good rule of thumb is to imagine changing the concrete page -in which case the page object interface shouldn't change."
+     */
+
     public SeleniumPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
@@ -21,6 +28,18 @@ public class SeleniumPage extends BasePage {
 
     @FindBy(className = "green")
     List<WebElement> moreNewsBtn;
+
+    @FindBy(id = "drag1")
+    WebElement origin;
+
+    @FindBy(id = "div2")
+    WebElement target;
+
+    @FindBy(id = "iframeResult")
+    WebElement iframe;
+
+    By originPO = By.id("drag1");
+    By targetPO = By.id("div2");
 
     @Step("Go To Selenium Official Page")
     public void goToSeleniumOfficialWeb() {
@@ -48,12 +67,31 @@ public class SeleniumPage extends BasePage {
     public void doubleClickMoreNewsButtonPO() {
         doubleClick(moreNews);
     }
-
+    @Step("Move Pointer to More News Button - Page Object")
     public void movePointerToNewsButtonPO() {
         moveMousePointerTo(moreNews);
     }
-
+    @Step("Move Pointer to More News Button - Page Factory")
     public void movePointerToNewsButtonPF() {
         moveMousePointerTo(moreNewsBtn.get(1));
+    }
+    @Step("Go To w3school drag and drop")
+    public void goToW3SchoolDropAndDropPage() {
+        goToWeb(W3SCHOOLDRAGANDDROP);
+    }
+    @Step("Move Pointer to More News Button - Page Factory")
+    public void performDragAndDropPF() {
+        switchToIframeByIdOrName(iframe);
+        dragFromAndDropTo(origin,target);
+        switchIframeToDefaultContent();
+        wait(5000);
+    }
+
+    @Step("Move Pointer to More News Button - Page Object")
+    public void performDragAndDropPO() {
+        switchToIframeByIndex(0);
+        dragFromAndDropTo(originPO,targetPO);
+        switchIframeToParentFrame();
+        wait(5000);
     }
 }
