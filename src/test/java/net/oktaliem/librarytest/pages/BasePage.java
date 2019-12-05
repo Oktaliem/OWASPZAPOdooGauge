@@ -321,6 +321,15 @@ public class BasePage implements ElementActions, JSExecutorActions, MouseAndKeyb
     }
 
     @Override
+    public void waitWithJavascriptExecutor(int miliseconds) {
+        long start = System.currentTimeMillis();
+        ((JavascriptExecutor) driver).executeAsyncScript(
+                "window.setTimeout(arguments[arguments.length - 1],"+miliseconds+");");
+        String time = String.valueOf(System.currentTimeMillis() - start);
+        log.info("Elapsed time: "+ time);
+    }
+
+    @Override
     public void switchToSecondBrowser() {
         ArrayList<String> tabs = new ArrayList(driver.getWindowHandles());
         driver.switchTo().window(tabs.get(1));
@@ -370,16 +379,16 @@ public class BasePage implements ElementActions, JSExecutorActions, MouseAndKeyb
                 alert.dismiss();
             }
         } catch (Exception e) {
-            ((JavascriptExecutor) driver).executeScript("window.confirm = function() { return true; }");
-            ((JavascriptExecutor) driver).executeScript("window.alert = function() { return true; }");
-            ((JavascriptExecutor) driver).executeScript("window.prompt = function() { return true; }");
+//            ((JavascriptExecutor) driver).executeScript("window.confirm = function() { return true; }");
+//            ((JavascriptExecutor) driver).executeScript("window.alert = function() { return true; }");
+//            ((JavascriptExecutor) driver).executeScript("window.prompt = function() { return true; }");
         }
         log.info("accepting javascript Pop Up");
     }
 
     @Override
     public String readFile(String filePath) throws IOException {
-        log.info("Read File from: "+filePath);
+        log.info("Read File from: " + filePath);
         BufferedReader br = new BufferedReader(new FileReader(filePath));
         try {
             StringBuilder sb = new StringBuilder();
@@ -524,28 +533,32 @@ public class BasePage implements ElementActions, JSExecutorActions, MouseAndKeyb
 
     @Override
     public void inputTextAndEnter(By el, String value) {
-        WebElement element =  driver.findElement(el);
+        WebElement element = driver.findElement(el);
         element.clear();
-        element.sendKeys(value,Keys.ENTER);
+        element.sendKeys(value, Keys.ENTER);
+        log.info("input by Element:" + el + " and Enter via Keyboard");
     }
 
     @Override
     public void inputTextAndEnter(WebElement element, String value) {
         element.clear();
-        element.sendKeys(value,Keys.ENTER);
+        element.sendKeys(value, Keys.ENTER);
+        log.info("input by Element:" + element + " and Enter via Keyboard");
     }
 
     @Override
     public void inputTextAndTab(By el, String value) {
-        WebElement element =  driver.findElement(el);
+        WebElement element = driver.findElement(el);
         element.clear();
-        element.sendKeys(value,Keys.TAB);
+        element.sendKeys(value, Keys.TAB);
+        log.info("input by Element:" + el + " and Tab via Keyboard");
     }
 
     @Override
     public void inputTextAndTab(WebElement element, String value) {
         element.clear();
-        element.sendKeys(value,Keys.TAB);
+        element.sendKeys(value, Keys.TAB);
+        log.info("input by Element:" + element + " and Tab via Keyboard");
     }
 
     @Override
@@ -553,7 +566,7 @@ public class BasePage implements ElementActions, JSExecutorActions, MouseAndKeyb
         Actions action = new Actions(driver);
         action.moveToElement(move).perform();
         action.moveToElement(target).click().perform();
-        log.info("Move your mouse pointer to element: " + move + "And Click: " + target);
+        log.info("Move your mouse pointer to element: " + move + " And Click: " + target);
     }
 
     @Override
@@ -563,8 +576,18 @@ public class BasePage implements ElementActions, JSExecutorActions, MouseAndKeyb
         Actions action = new Actions(driver);
         action.moveToElement(el1).perform();
         action.moveToElement(el2).click().perform();
-        log.info("Move your mouse pointer to element: " + el1 + "And Click: " + el2);
+        log.info("Move your mouse pointer to element: " + el1 + " And Click: " + el2);
     }
 
+    @Override
+    public Object executeJavascript(String javascript) {
+        log.info("execute javascript: "+ javascript);
+        return ((JavascriptExecutor)driver).executeScript(javascript);
+    }
 
+    @Override
+    public Dimension getScreenSize() {
+        org.openqa.selenium.Dimension windowSize = driver.manage().window().getSize();
+        return new Dimension(windowSize.getWidth(), windowSize.getHeight());
+    }
 }

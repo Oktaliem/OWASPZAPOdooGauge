@@ -109,6 +109,7 @@ public class UnitTest extends BaseTest{
     public void TC14() throws IOException {
         user.loginPage().launchTheApplication();
         user.loginPage().getCSRFToken();
+        //This test is intended to fail
     }
 
 
@@ -185,7 +186,6 @@ public class UnitTest extends BaseTest{
         user.loginPage().loginSamplePOWithTabAndEnter();
     }
 
-
     @Test(description ="Page Factory - input and tab and enter ")
     public void TC26(){
         user.seleniumPage().launchTheApplicationGuru99();
@@ -196,5 +196,28 @@ public class UnitTest extends BaseTest{
     public void TC27(){
         user.seleniumPage().launchTheApplicationGuru99();
         user.seleniumPage().goToTestingAndClickCucumberPO();
+    }
+
+    @Test(description = "Page Object - input and tab and enter ")
+    public void TC28(){
+        user.seleniumPage().launchTheApplicationGuru99();
+        user.seleniumPage().waitViaJavaScriptExecutor();
+    }
+
+    @Test(description = "General - Execute Javascript ")
+    public void TC29(){
+        user.seleniumPage().launchTheApplicationGuru99();
+        user.seleniumPage().executeJavascript("alert(\"Hello World!\")");
+        user.seleniumPage().wait(5000);
+        user.seleniumPage().handleJavascriptPopUp("Hello World!");
+        user.seleniumPage().executeJavascript("window.confirm(\"sometext\");");
+        user.seleniumPage().wait(5000);
+        user.seleniumPage().handleJavascriptPopUp("cancel");
+        user.seleniumPage().executeJavascript("window.prompt(\"sometext\",\"defaultText\");");
+        user.seleniumPage().wait(5000);
+        user.seleniumPage().handleJavascriptPopUp("defaultText");
+        user.seleniumPage().refreshPageViaJavaScriptExecutor();
+        user.seleniumPage().executeJavascript("window.open()");
+        user.seleniumPage().executeJavascript("screen.height");
     }
 }

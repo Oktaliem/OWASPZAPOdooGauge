@@ -11,7 +11,7 @@
 
                 <script type="text/javascript">
                     var odoo = {
-                        csrf_token: "ae382d5d75f8477be639749eec3eb29133ad312do",
+                        csrf_token: "af70dc14a5803bb86b3ba2727fe1bc2bffa0ef11o",
                         debug: "",
                     };
                 </script>
@@ -24,11 +24,11 @@
         
     
             <script defer="defer" type="text/javascript" src="/web/content/434-383b496/web.assets_common_lazy.js"></script>
-            <script defer="defer" type="text/javascript" data-src="/web/content/435-a16725c/web.assets_frontend_lazy.js"></script>
+            <script defer="defer" type="text/javascript" src="/web/content/435-a16725c/web.assets_frontend_lazy.js"></script>
         
 
                 
-            </head>
+            <script type="text/javascript" src="/web/webclient/locale/en_US"></script></head>
             <body class="bg-100">
                 <div id="wrapwrap" class="">
                 
@@ -47,7 +47,7 @@
                         </div>
                         
             <form class="oe_login_form" role="form" method="post" onsubmit="this.action = this.action + location.hash" action="/web/login">
-                <input type="hidden" name="csrf_token" value="e008f370937809a557c501c308d20202b3ae9d2fo1575307328">
+                <input type="hidden" name="csrf_token" value="988e57df79c805fdb5267a533c121a948872d993o1575322093">
 
                 
 

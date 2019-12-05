@@ -118,4 +118,8 @@ public class SeleniumPage extends BasePage {
         moveMouseAndClick(guruDrPO,cucumberPO);
         wait(3000);
     }
+
+    public void waitViaJavaScriptExecutor() {
+        waitWithJavascriptExecutor(10000);
+    }
 }

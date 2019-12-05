@@ -1,5 +1,6 @@
 package net.oktaliem.librarytest.webactions;
 
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebElement;
 
 import java.io.IOException;
@@ -24,4 +25,5 @@ public interface GeneralActions {
     void switchToIframeByIdOrName(WebElement element);
     void switchIframeToDefaultContent();
     void switchIframeToParentFrame();
+    Dimension getScreenSize();
 }

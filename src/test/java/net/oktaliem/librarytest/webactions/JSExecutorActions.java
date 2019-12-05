@@ -16,4 +16,6 @@ public interface JSExecutorActions {
     void refreshPageViaJavaScriptExecutor();
     void handleJavascriptPopUp(String info);
     void openNewTab();
+    Object executeJavascript(String javascript);
+
 }
