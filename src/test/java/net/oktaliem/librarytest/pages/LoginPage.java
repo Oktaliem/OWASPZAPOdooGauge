@@ -120,6 +120,4 @@ public class LoginPage extends HeaderComponent {
         inputTextAndEnter(passwordLogin,"bitnami");
         wait(5000);
     }
-
-
 }

@@ -9,7 +9,8 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-import static net.oktaliem.Path.*;
+import static net.oktaliem.Path.SELENIUM_WEB;
+import static net.oktaliem.Path.W3SCHOOLDRAGANDDROP;
 
 public class SeleniumPage extends BasePage {
     /**

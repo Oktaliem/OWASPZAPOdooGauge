@@ -1,5 +1,6 @@
 package net.oktaliem.librarytest;
 
+import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
@@ -207,6 +208,8 @@ public class UnitTest extends BaseTest{
     @Test(description = "General - Execute Javascript ")
     public void TC29(){
         user.seleniumPage().launchTheApplicationGuru99();
+        user.seleniumPage().wait(5000);
+        user.seleniumPage().wait(5000);
         user.seleniumPage().executeJavascript("alert(\"Hello World!\")");
         user.seleniumPage().wait(5000);
         user.seleniumPage().handleJavascriptPopUp("Hello World!");
@@ -218,6 +221,15 @@ public class UnitTest extends BaseTest{
         user.seleniumPage().handleJavascriptPopUp("defaultText");
         user.seleniumPage().refreshPageViaJavaScriptExecutor();
         user.seleniumPage().executeJavascript("window.open()");
+        user.seleniumPage().executeJavascript("window.focus()");
         user.seleniumPage().executeJavascript("screen.height");
+    }
+
+    @Test(description = "General - Login with javascript executor (Negative Scenario) ")
+    public void TC30(){
+        user.loginPage().launchTheApplication();
+        user.loginPage().executeJavascript("document.getElementById('login').value='bitnami'");
+        user.loginPage().executeJavascript("document.getElementById('password').value='test'");
+        user.loginPage().executeJavascript("document.getElementsByClassName('btn-primary')[0].click()");
     }
 }
