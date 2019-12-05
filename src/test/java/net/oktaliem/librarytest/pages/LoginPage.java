@@ -44,6 +44,9 @@ public class LoginPage extends HeaderComponent {
     @Step("Go to Odoo Login Page")
     public void launchTheApplication() {
         goToWeb(LOGIN_PAGE_URL);
+        wait(1000);
+        refreshPageViaJavaScriptExecutor();
+        wait(1000);
     }
 
     @Step("Page Factory - Login")
@@ -103,6 +106,19 @@ public class LoginPage extends HeaderComponent {
         Assert.assertEquals(value, "01122a113f7377a85655c778b1143914eaa38884o");
         log.info("Regex Result: " + values);
         log.info("Result: " + value);
+    }
+
+    @Step("Login with Tab And Enter")
+    public void loginSamplePFWithTabEnter() {
+        inputTextAndTab(userName,"user@example.com");
+        inputTextAndEnter(password,"bitnami");
+        wait(5000);
+    }
+
+    public void loginSamplePOWithTabAndEnter() {
+        inputTextAndTab(userNameLogin,"user@example.com");
+        inputTextAndEnter(passwordLogin,"bitnami");
+        wait(5000);
     }
 
 

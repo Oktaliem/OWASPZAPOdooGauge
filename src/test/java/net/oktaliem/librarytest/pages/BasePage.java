@@ -48,6 +48,7 @@ public class BasePage implements ElementActions, JSExecutorActions, MouseAndKeyb
 
     @Override
     public void inputTextBox(By el, String value) {
+        driver.findElement(el).clear();
         driver.findElement(el).sendKeys(value);
         log.info("User inputs field with element: " + el + " and value " + value);
     }
@@ -438,7 +439,6 @@ public class BasePage implements ElementActions, JSExecutorActions, MouseAndKeyb
         log.info("Drag from :" + from + " then drop to: " + to);
     }
 
-
     @Override
     public void dragFromAndDropTo(WebElement from, WebElement to) {
         Actions builder = new Actions(driver);
@@ -513,7 +513,7 @@ public class BasePage implements ElementActions, JSExecutorActions, MouseAndKeyb
     @Override
     public void switchIframeToDefaultContent() {
         driver.switchTo().defaultContent();
-        log.info("Switch to default content");
+        log.info("Switch to default content - Back to main Page");
     }
 
     @Override
@@ -521,5 +521,50 @@ public class BasePage implements ElementActions, JSExecutorActions, MouseAndKeyb
         driver.switchTo().parentFrame();
         log.info("Switch to parent frame");
     }
+
+    @Override
+    public void inputTextAndEnter(By el, String value) {
+        WebElement element =  driver.findElement(el);
+        element.clear();
+        element.sendKeys(value,Keys.ENTER);
+    }
+
+    @Override
+    public void inputTextAndEnter(WebElement element, String value) {
+        element.clear();
+        element.sendKeys(value,Keys.ENTER);
+    }
+
+    @Override
+    public void inputTextAndTab(By el, String value) {
+        WebElement element =  driver.findElement(el);
+        element.clear();
+        element.sendKeys(value,Keys.TAB);
+    }
+
+    @Override
+    public void inputTextAndTab(WebElement element, String value) {
+        element.clear();
+        element.sendKeys(value,Keys.TAB);
+    }
+
+    @Override
+    public void moveMouseAndClick(WebElement move, WebElement target) {
+        Actions action = new Actions(driver);
+        action.moveToElement(move).perform();
+        action.moveToElement(target).click().perform();
+        log.info("Move your mouse pointer to element: " + move + "And Click: " + target);
+    }
+
+    @Override
+    public void moveMouseAndClick(By move, By target) {
+        WebElement el1 = driver.findElement(move);
+        WebElement el2 = driver.findElement(target);
+        Actions action = new Actions(driver);
+        action.moveToElement(el1).perform();
+        action.moveToElement(el2).click().perform();
+        log.info("Move your mouse pointer to element: " + el1 + "And Click: " + el2);
+    }
+
 
 }

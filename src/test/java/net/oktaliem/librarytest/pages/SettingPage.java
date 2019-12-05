@@ -4,6 +4,7 @@ import com.thoughtworks.gauge.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
@@ -15,8 +16,8 @@ public class SettingPage extends HeaderComponent {
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(className = "custom-control-label")
-    List<WebElement> firstCheckBoxName;
+    @FindBy(how = How.CLASS_NAME, using = "custom-control-label")
+    private List<WebElement> firstCheckBoxName;
 
     @Step("Select Checkbox Name")
     public void selectAllName() {

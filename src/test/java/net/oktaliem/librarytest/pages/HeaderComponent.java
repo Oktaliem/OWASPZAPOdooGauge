@@ -18,7 +18,7 @@ public class HeaderComponent extends BasePage {
     private By setting = By.className("dropdown-item");
 
     @FindBy(className = "dropdown-item")
-    List<WebElement> Setting;
+    private List<WebElement> Setting;
 
     @Step("Open Drop Down Menu")
     public void openDropDownMenu(){

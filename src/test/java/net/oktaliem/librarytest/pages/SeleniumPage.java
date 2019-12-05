@@ -25,21 +25,29 @@ public class SeleniumPage extends BasePage {
     }
 
     private By moreNews = By.xpath("//div[@class='button green']");
+    private By originPO = By.id("drag1");
+    private By targetPO = By.id("div2");
+    private By guruDrPO = By.xpath("//span[@class='g-separator g-menu-item-content']//span[@class='g-menu-item-title'][contains(text(),'Testing')]");
+    private By cucumberPO = By.xpath("//span[contains(text(),'Cucumber')]");
 
     @FindBy(className = "green")
-    List<WebElement> moreNewsBtn;
+    private List<WebElement> moreNewsBtn;
 
     @FindBy(id = "drag1")
-    WebElement origin;
+    private WebElement origin;
 
     @FindBy(id = "div2")
-    WebElement target;
+    private WebElement target;
 
-    @FindBy(id = "iframeResult")
-    WebElement iframe;
+   @FindBy(id = "iframeResult")
+    private WebElement iframe;
 
-    By originPO = By.id("drag1");
-    By targetPO = By.id("div2");
+    @FindBy(className = "g-menu-parent-indicator")
+    private List<WebElement> guruDropDown;
+
+    @FindBy(xpath = "//span[contains(text(),'Cucumber')]")
+    private WebElement cucumber;
+
 
     @Step("Go To Selenium Official Page")
     public void goToSeleniumOfficialWeb() {
@@ -93,5 +101,21 @@ public class SeleniumPage extends BasePage {
         dragFromAndDropTo(originPO,targetPO);
         switchIframeToParentFrame();
         wait(5000);
+    }
+
+    public void launchTheApplicationGuru99() {
+        goToWeb("https://www.guru99.com/");
+    }
+
+    public void goToTestingAndClickCucumberPF() {
+        moveMousePointerTo(guruDropDown.get(0));
+        moveMouseAndClick(guruDropDown.get(0),cucumber);
+        wait(5000);
+    }
+
+    public void goToTestingAndClickCucumberPO() {
+        moveMousePointerTo(guruDrPO);
+        moveMouseAndClick(guruDrPO,cucumberPO);
+        wait(3000);
     }
 }

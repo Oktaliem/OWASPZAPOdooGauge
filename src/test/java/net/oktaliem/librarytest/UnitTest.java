@@ -10,14 +10,14 @@ public class UnitTest extends BaseTest{
      * “If you have WebDriver APIs in your test methods, You're Doing It Wrong.” Simon Stewart
      */
 
-    @Test(description ="Page Factory - login ")
+    @Test(description ="Page Factory - input and click ")
     public void TC01(){
         user.loginPage().launchTheApplication();
         user.loginPage().loginSamplePF();
         user.loginPage().landingToDiscussPagePF();
     }
 
-    @Test(description = "Page Object - login ")
+    @Test(description = "Page Object - input and click ")
     public void TC02(){
         user.loginPage().launchTheApplication();
         user.loginPage().loginSamplePO();
@@ -171,5 +171,30 @@ public class UnitTest extends BaseTest{
     public void TC23(){
         user.seleniumPage().goToW3SchoolDropAndDropPage();
         user.seleniumPage().performDragAndDropPO();
+    }
+
+    @Test(description ="Page Factory - input and tab and enter ")
+    public void TC24(){
+        user.loginPage().launchTheApplication();
+        user.loginPage().loginSamplePFWithTabEnter();
+    }
+
+    @Test(description = "Page Object - input and tab and enter ")
+    public void TC25(){
+        user.loginPage().launchTheApplication();
+        user.loginPage().loginSamplePOWithTabAndEnter();
+    }
+
+
+    @Test(description ="Page Factory - input and tab and enter ")
+    public void TC26(){
+        user.seleniumPage().launchTheApplicationGuru99();
+        user.seleniumPage().goToTestingAndClickCucumberPF();
+    }
+
+    @Test(description = "Page Object - input and tab and enter ")
+    public void TC27(){
+        user.seleniumPage().launchTheApplicationGuru99();
+        user.seleniumPage().goToTestingAndClickCucumberPO();
     }
 }
