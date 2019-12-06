@@ -44,23 +44,19 @@ public class LoginPage extends HeaderComponent {
     @Step("Go to Odoo Login Page")
     public void launchTheApplication() {
         goToWeb(LOGIN_PAGE_URL);
-        wait(1000);
-        refreshPageViaJavaScriptExecutor();
-        wait(1000);
     }
 
     @Step("Page Factory - Login")
     public void loginSamplePF() {
-        inputTextBox(userName, "test");
-        inputTextBox(password, "test");
+        inputTextBox(userName, "user@example.com");
+        inputTextBox(password, "bitnami");
         clickOn(loginBtn);
     }
 
     @Step("Page Object - Login")
     public void loginSamplePO() {
-        inputTextBox(userNameLogin, "test");
-        inputTextBox(passwordLogin, "test");
-        wait(5000);
+        inputTextBox(userNameLogin, "user@example.com");
+        inputTextBox(passwordLogin, "bitnami");
         clickOn(loginButton);
     }
 

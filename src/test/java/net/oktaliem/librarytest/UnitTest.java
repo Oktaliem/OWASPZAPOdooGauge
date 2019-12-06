@@ -15,7 +15,6 @@ public class UnitTest extends BaseTest{
     public void TC01(){
         user.loginPage().launchTheApplication();
         user.loginPage().loginSamplePF();
-        user.loginPage().landingToDiscussPagePF();
     }
 
     @Test(description = "Page Object - input and click ")
@@ -223,13 +222,32 @@ public class UnitTest extends BaseTest{
         user.seleniumPage().executeJavascript("window.open()");
         user.seleniumPage().executeJavascript("window.focus()");
         user.seleniumPage().executeJavascript("screen.height");
+
+        //https://chercher.tech/java/javascript-executor-selenium-webdriver
     }
 
     @Test(description = "General - Login with javascript executor (Negative Scenario) ")
     public void TC30(){
-        user.loginPage().launchTheApplication();
+        user.loginPage().executeJavascript("window.location=\"http://localhost/web/login/\";");
+        user.loginPage().wait(2000);
         user.loginPage().executeJavascript("document.getElementById('login').value='bitnami'");
+        user.loginPage().wait(2000);
         user.loginPage().executeJavascript("document.getElementById('password').value='test'");
+        user.loginPage().wait(2000);
+        user.loginPage().executeJavascript("document.getElementsByClassName('btn-primary')[0].style.backgroundColor='red'");
+        user.loginPage().wait(2000);
+        user.loginPage().executeJavascript("document.getElementsByClassName('btn-primary')[0].click()");
+        user.loginPage().wait(2000);
+        user.loginPage().executeJavascript("document.body.style.zoom='50'");
+        user.loginPage().wait(2000);
+    }
+
+
+    @Test(description = "General - Login with javascript executor (Positive Scenario) ")
+    public void TC31(){
+        user.loginPage().executeJavascript("window.location=\"http://localhost/web/login/\";");
+        user.loginPage().executeJavascript("document.getElementById('login').value='user@example.com'");
+        user.loginPage().executeJavascript("document.getElementById('password').value='bitnami'");
         user.loginPage().executeJavascript("document.getElementsByClassName('btn-primary')[0].click()");
     }
 }
