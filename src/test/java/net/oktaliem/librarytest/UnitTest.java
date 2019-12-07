@@ -3,8 +3,6 @@ package net.oktaliem.librarytest;
 import org.openqa.selenium.Keys;
 import org.testng.annotations.Test;
 
-import java.awt.*;
-import java.awt.event.KeyEvent;
 import java.io.IOException;
 
 import static net.oktaliem.Path.LOGIN_PAGE_URL;
@@ -292,6 +290,30 @@ public class UnitTest extends BaseTest{
         user.loginPage().wait(1000);
         user.loginPage().performKeyboardAction(Keys.ARROW_DOWN);
         user.loginPage().wait(7000);
+    }
+
+    @Test(description = "Page Object - Page Factory Drop Down list")
+    public void TC33(){
+        user.seleniumPage().goToWeb("https://www.w3schools.com/css/tryit.asp?filename=trycss_forms");
+        user.seleniumPage().selectCountryDropDownList();
+    }
+
+    @Test(description = "Page Object - Page Factory Radio button by Text")
+    public void TC34(){
+        user.seleniumPage().goToWeb("https://www.w3schools.com/bootstrap/tryit.asp?filename=trybs_form_radio_inline&stacked=h");
+        user.seleniumPage().selectRadioW3SchoolText();
+    }
+
+    @Test(description = "Page Object- Page Factory Radio Button by Value")
+    public void TC35(){
+        user.seleniumPage().goToWeb("https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_radio_value3");
+        user.seleniumPage().selectRadioW3SchoolValue();
+    }
+
+    @Test(description = "Page Object - Page Factory Upload File")
+    public void TC36(){
+        user.seleniumPage().goToWeb("https://www.w3schools.com/tags/tryit.asp?filename=tryhtml5_input_type_file");
+        user.seleniumPage().uploadFilePOPF();
     }
 
 }

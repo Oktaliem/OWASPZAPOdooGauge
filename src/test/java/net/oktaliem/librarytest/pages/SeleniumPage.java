@@ -1,6 +1,5 @@
 package net.oktaliem.librarytest.pages;
 
-import com.thoughtworks.gauge.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -30,6 +29,10 @@ public class SeleniumPage extends BasePage {
     private By targetPO = By.id("div2");
     private By guruDrPO = By.xpath("//span[@class='g-separator g-menu-item-content']//span[@class='g-menu-item-title'][contains(text(),'Testing')]");
     private By cucumberPO = By.xpath("//span[contains(text(),'Cucumber')]");
+    private By countryPO = By.id("country");
+    private By optionPO = By.tagName("label");
+    private By inputPO = By.tagName("input");
+    private By uploadFilePO = By.cssSelector("body:nth-child(2) form:nth-child(3) > input:nth-child(1)");
 
     @FindBy(className = "green")
     private List<WebElement> moreNewsBtn;
@@ -40,7 +43,7 @@ public class SeleniumPage extends BasePage {
     @FindBy(id = "div2")
     private WebElement target;
 
-   @FindBy(id = "iframeResult")
+    @FindBy(id = "iframeResult")
     private WebElement iframe;
 
     @FindBy(className = "g-menu-parent-indicator")
@@ -49,57 +52,63 @@ public class SeleniumPage extends BasePage {
     @FindBy(xpath = "//span[contains(text(),'Cucumber')]")
     private WebElement cucumber;
 
+    @FindBy(id = "country")
+    private WebElement country;
 
-    @Step("Go To Selenium Official Page")
+    @FindBy(tagName = "label")
+    private List<WebElement> options;
+
+    @FindBy(tagName = "input")
+    private List<WebElement> inputs;
+
+    @FindBy(css = "body:nth-child(2) form:nth-child(3) > input:nth-child(1)")
+    private WebElement uploadFilePF;
+
     public void goToSeleniumOfficialWeb() {
         goToWeb(SELENIUM_WEB);
     }
 
-    @Step("Go to More News button - Page Object")
-    public void gotToMoreNewsButtonPO(){
+    public void gotToMoreNewsButtonPO() {
         scrollUntilViewElement(moreNews);
         wait(5000);
     }
 
-    @Step("Go to More News button - Page Factory")
-    public void gotToMoreNewsButtonPF(){
+    public void gotToMoreNewsButtonPF() {
         wait(3000);
         scrollUntilViewElement(moreNewsBtn.get(1));
         wait(3000);
     }
 
-    @Step("Double Click More News Button - Page Factory")
     public void doubleClickMoreNewsButtonPF() {
         doubleClick(moreNewsBtn.get(1));
     }
-    @Step("Double Click More News Button - Page Object")
+
     public void doubleClickMoreNewsButtonPO() {
         doubleClick(moreNews);
     }
-    @Step("Move Pointer to More News Button - Page Object")
+
     public void movePointerToNewsButtonPO() {
         moveMousePointerTo(moreNews);
     }
-    @Step("Move Pointer to More News Button - Page Factory")
+
     public void movePointerToNewsButtonPF() {
         moveMousePointerTo(moreNewsBtn.get(1));
     }
-    @Step("Go To w3school drag and drop")
+
     public void goToW3SchoolDropAndDropPage() {
         goToWeb(W3SCHOOLDRAGANDDROP);
     }
-    @Step("Move Pointer to More News Button - Page Factory")
+
     public void performDragAndDropPF() {
         switchToIframeByIdOrName(iframe);
-        dragFromAndDropTo(origin,target);
+        dragFromAndDropTo(origin, target);
         switchIframeToDefaultContent();
         wait(5000);
     }
 
-    @Step("Move Pointer to More News Button - Page Object")
     public void performDragAndDropPO() {
         switchToIframeByIndex(0);
-        dragFromAndDropTo(originPO,targetPO);
+        dragFromAndDropTo(originPO, targetPO);
         switchIframeToParentFrame();
         wait(5000);
     }
@@ -110,17 +119,54 @@ public class SeleniumPage extends BasePage {
 
     public void goToTestingAndClickCucumberPF() {
         moveMousePointerTo(guruDropDown.get(0));
-        moveMouseAndClick(guruDropDown.get(0),cucumber);
+        moveMouseAndClick(guruDropDown.get(0), cucumber);
         wait(5000);
     }
 
     public void goToTestingAndClickCucumberPO() {
         moveMousePointerTo(guruDrPO);
-        moveMouseAndClick(guruDrPO,cucumberPO);
+        moveMouseAndClick(guruDrPO, cucumberPO);
         wait(3000);
     }
 
     public void waitViaJavaScriptExecutor() {
         waitWithJavascriptExecutor(10000);
+    }
+
+    public void selectCountryDropDownList() {
+        switchToIframeByIndex(0);
+        selectOnDropDownListByText(country, "USA");
+        wait(5000);
+        selectOnDropDownListByValue(country, "canada");
+        wait(5000);
+        selectOnDropDownListByValue(countryPO, "australia");
+        wait(5000);
+    }
+
+    public void selectRadioW3SchoolText() {
+        switchToIframeByIndex(0);
+        selectOnRadioButtonByText(options, "Option 2");
+        wait(5000);
+        selectOnRadioButtonByText(optionPO, "Option 1");
+        wait(5000);
+    }
+
+    public void selectRadioW3SchoolValue() {
+        switchToIframeByIndex(0);
+        selectOnRadioButtonByValue(inputs, "Firefox");
+        wait(5000);
+        selectOnRadioButtonByValue(inputPO, "Safari");
+        wait(5000);
+    }
+
+    public void uploadFilePOPF() {
+        switchToIframeByIndex(0);
+        uploadFile(uploadFilePO, "/actualhtmltext/loginpage.txt");
+        wait(3000);
+        refreshPage();
+        switchToIframeByIndex(0);
+        wait(3000);
+        uploadFile(uploadFilePF, "/actualhtmltext/loginpage.txt");
+        wait(3000);
     }
 }

@@ -17,7 +17,6 @@ public interface GeneralActions {
     void switchToSecondBrowser();
     void switchToFirstBrowser();
     String getValueWithRegex(String regex, String text);
-    void uploadFile(WebElement element, String fileName);
     String getCurrentURL();
     String readFile(String filePath) throws IOException;
     void goToWeb(String url);

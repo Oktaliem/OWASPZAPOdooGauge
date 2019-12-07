@@ -122,8 +122,8 @@ public class BasePage implements ElementActions, JSExecutorActions, MouseAndKeyb
     }
 
     @Override
-    public void selectCheckBox(By el, String status) {
-        WebElement element = driver.findElement(el);
+    public void selectCheckBox(By el, String status, int index) {
+        WebElement element = driver.findElements(el).get(index);
         if (status.equals("n")) {
             if (element.isSelected()) {
                 clickOn(element);
@@ -138,6 +138,13 @@ public class BasePage implements ElementActions, JSExecutorActions, MouseAndKeyb
                 clickOn(element);
             }
         }
+    }
+
+    @Override
+    public void uploadFile(By el, String fileName) {
+        WebElement element = driver.findElement(el);
+        element.sendKeys(System.getProperty("user.dir") + "/src/main/resources/" + fileName);
+        log.info("Choose file name: " + fileName);
     }
 
 
@@ -205,6 +212,7 @@ public class BasePage implements ElementActions, JSExecutorActions, MouseAndKeyb
     @Override
     public void selectOnRadioButtonByText(List<WebElement> elements, String text) {
         for (WebElement element : elements) {
+            System.out.println("Text: "+ element.getText());
             if (element.getText().trim().equals(text.trim())) {
                 clickOn(element);
                 log.info("Select radio button by text: " + text);

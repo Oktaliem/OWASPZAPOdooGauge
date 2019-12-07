@@ -18,7 +18,8 @@ public interface ElementActions {
     void selectOnDropDownListByValue(By el, String value);
     void selectOnRadioButtonByText(By els, String text);
     void selectOnRadioButtonByValue(By els, String text);
-    void selectCheckBox(By el, String status);
+    void selectCheckBox(By el, String status, int index);
+    void uploadFile(By el, String fileName);
 
     /** Web Action - Page Factory **/
     void clickOn(WebElement element);
@@ -30,5 +31,6 @@ public interface ElementActions {
     void selectOnRadioButtonByText(List<WebElement> elements, String text);
     void selectOnRadioButtonByValue(List<WebElement> elements, String text);
     void selectCheckBox(WebElement element, String status);
+    void uploadFile(WebElement element, String fileName);
 
 }

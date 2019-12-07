@@ -1,6 +1,7 @@
 package net.oktaliem.librarytest.pages;
 
 import com.thoughtworks.gauge.Step;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -16,13 +17,16 @@ public class SettingPage extends HeaderComponent {
         PageFactory.initElements(driver, this);
     }
 
+    By firstCheckBoxNamePO = By.className("custom-control-label");
+
     @FindBy(how = How.CLASS_NAME, using = "custom-control-label")
     private List<WebElement> firstCheckBoxName;
 
     @Step("Select Checkbox Name")
     public void selectAllName() {
+        wait(3000);
         selectCheckBox(firstCheckBoxName.get(0),"y");
-
+        wait(3000);
         //This below action returns false positive. This checkbox object is not applicable for this library action
         //because when element is validated by .isSelected then the result return false
         //and since the checkbox should be clicked by javascript (meaning selenium unable to find that element is intractable)
@@ -31,9 +35,12 @@ public class SettingPage extends HeaderComponent {
         //Odoo is using Djago Framework
         //but another framework .isSelected probably works
         selectCheckBox(firstCheckBoxName.get(0),"n");
-
+        wait(3000);
         //to un-select without validation by disregard the checkbox is selected or not.
         selectCheckBox(firstCheckBoxName.get(0),"y");
+        wait(3000);
+        selectCheckBox(firstCheckBoxNamePO,"y",0);
+        wait(3000);
     }
 
 }
