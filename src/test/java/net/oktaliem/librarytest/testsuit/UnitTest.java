@@ -1,4 +1,4 @@
-package net.oktaliem.librarytest;
+package net.oktaliem.librarytest.testsuit;
 
 import org.openqa.selenium.Keys;
 import org.testng.annotations.Test;
@@ -8,6 +8,9 @@ import java.io.IOException;
 import static net.oktaliem.Path.LOGIN_PAGE_URL;
 import static net.oktaliem.Path.SELENIUM_WEB;
 
+/**
+ * Author : Okta Liem
+ */
 public class UnitTest extends BaseTest{
 
     /**
@@ -55,7 +58,7 @@ public class UnitTest extends BaseTest{
     }
 
     @Test(description = "General - Go back and go forward on web page")
-    public void TC_07(){
+    public void TC07(){
         user.loginPage().launchTheApplication();
         user.loginPage().wait(3000);
         user.loginPage().goToPreviousPage();

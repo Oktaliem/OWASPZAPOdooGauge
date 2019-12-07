@@ -10,7 +10,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-public class SettingPage extends HeaderComponent {
+public class SettingPage extends BasePage {
 
     public SettingPage(WebDriver driver) {
         super(driver);

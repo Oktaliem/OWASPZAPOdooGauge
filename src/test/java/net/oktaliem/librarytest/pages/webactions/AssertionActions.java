@@ -1,4 +1,4 @@
-package net.oktaliem.librarytest.webactions;
+package net.oktaliem.librarytest.pages.webactions;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 /**
  * Author : Okta Liem
  */
-public interface VerificationActions {
+public interface AssertionActions {
 
     /** Verification - Page Factory **/
     void checkIfTextIsExpected(WebElement element, String expected);

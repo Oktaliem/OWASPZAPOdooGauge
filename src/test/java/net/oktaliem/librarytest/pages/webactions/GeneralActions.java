@@ -1,4 +1,4 @@
-package net.oktaliem.librarytest.webactions;
+package net.oktaliem.librarytest.pages.webactions;
 
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;

@@ -1,5 +1,8 @@
-package net.oktaliem.librarytest.pages;
+package net.oktaliem.librarytest.testsuit;
 
+import net.oktaliem.librarytest.pages.LoginPage;
+import net.oktaliem.librarytest.pages.SeleniumPage;
+import net.oktaliem.librarytest.pages.SettingPage;
 import org.openqa.selenium.WebDriver;
 
 public class User {

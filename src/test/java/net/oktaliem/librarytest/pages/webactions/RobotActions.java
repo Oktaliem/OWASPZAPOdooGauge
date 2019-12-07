@@ -1,8 +1,11 @@
-package net.oktaliem.librarytest.webactions;
+package net.oktaliem.librarytest.pages.webactions;
 
 import java.awt.*;
 
-public interface Robots {
+/**
+ * Author : Okta Liem
+ */
+public interface RobotActions {
     /** https://docs.oracle.com/en/java/javase/11/docs/api/java.desktop/java/awt/event/KeyEvent.html*/
 
     void robotKeyPress(int keyEvent) throws AWTException;

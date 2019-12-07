@@ -12,7 +12,7 @@ import java.io.IOException;
 
 import static net.oktaliem.Path.LOGIN_PAGE_URL;
 
-public class LoginPage extends HeaderComponent {
+public class LoginPage extends BasePage {
 
     public LoginPage(WebDriver driver) {
         super(driver);

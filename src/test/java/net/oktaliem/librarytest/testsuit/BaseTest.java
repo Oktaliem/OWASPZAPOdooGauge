@@ -1,13 +1,14 @@
-package net.oktaliem.librarytest;
+package net.oktaliem.librarytest.testsuit;
 
-import net.oktaliem.librarytest.pages.User;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import java.util.concurrent.TimeUnit;
 
-
+/**
+ * Author : Okta Liem
+ */
 public class BaseTest {
     public WebDriver driver ;
     public User user;

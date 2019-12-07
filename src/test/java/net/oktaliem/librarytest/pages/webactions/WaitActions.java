@@ -1,4 +1,4 @@
-package net.oktaliem.librarytest.webactions;
+package net.oktaliem.librarytest.pages.webactions;
 
 import java.awt.*;
 
