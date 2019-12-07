@@ -10,6 +10,9 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.UnexpectedTagNameException;
 
+import java.awt.*;
+import java.awt.event.InputEvent;
+import java.awt.event.KeyEvent;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -22,7 +25,7 @@ import java.util.regex.Pattern;
 
 
 public class BasePage implements ElementActions, JSExecutorActions, MouseAndKeyboardActions, GeneralActions,
-        WaitActions, VerificationActions {
+        WaitActions, VerificationActions, Robots {
 
     public WebDriver driver;
     public static Logger log = Logger.getLogger("Library Test");
@@ -38,19 +41,28 @@ public class BasePage implements ElementActions, JSExecutorActions, MouseAndKeyb
     @Override
     public void clickOn(By el) {
         WebElement element = driver.findElement(el);
-        try {
-            element.click();
-            log.info("User clicks On Element: " + element);
-        } catch (ElementClickInterceptedException e) {
-            clickViaJavascriptExecutor(element);
+        if (element.isDisplayed()) {
+            try {
+                element.click();
+                log.info("User clicks On Element: " + element);
+            } catch (ElementClickInterceptedException e) {
+                clickViaJavascriptExecutor(element);
+            }
+        } else {
+            log.info(element + " is not displayed");
         }
     }
 
     @Override
     public void inputTextBox(By el, String value) {
-        driver.findElement(el).clear();
-        driver.findElement(el).sendKeys(value);
-        log.info("User inputs field with element: " + el + " and value " + value);
+        WebElement element = driver.findElement(el);
+        if (element.isDisplayed()) {
+            element.clear();
+            element.sendKeys(value);
+            log.info("User inputs field with element: " + el + " and value " + value);
+        } else {
+            log.info(element + " is not displayed");
+        }
     }
 
     @Override
@@ -134,18 +146,27 @@ public class BasePage implements ElementActions, JSExecutorActions, MouseAndKeyb
      */
     @Override
     public void clickOn(WebElement element) {
-        try {
-            element.click();
-            log.info("User clicks On Element: " + element);
-        } catch (ElementClickInterceptedException e) {
-            clickViaJavascriptExecutor(element);
+        if (element.isDisplayed()) {
+            try {
+                element.click();
+                log.info("User clicks On Element: " + element);
+            } catch (ElementClickInterceptedException e) {
+                clickViaJavascriptExecutor(element);
+            }
+        } else {
+            log.info(element + " is not displayed");
         }
     }
 
     @Override
     public void inputTextBox(WebElement element, String value) {
-        element.sendKeys(value);
-        log.info("User inputs field with element: " + element + " and value " + value);
+        if (element.isDisplayed()) {
+            element.clear();
+            element.sendKeys(value);
+            log.info("User inputs field with element: " + element + " and value " + value);
+        } else {
+            log.info(element + " is not displayed");
+        }
     }
 
     @Override
@@ -324,9 +345,9 @@ public class BasePage implements ElementActions, JSExecutorActions, MouseAndKeyb
     public void waitWithJavascriptExecutor(int miliseconds) {
         long start = System.currentTimeMillis();
         ((JavascriptExecutor) driver).executeAsyncScript(
-                "window.setTimeout(arguments[arguments.length - 1],"+miliseconds+");");
+                "window.setTimeout(arguments[arguments.length - 1]," + miliseconds + ");");
         String time = String.valueOf(System.currentTimeMillis() - start);
-        log.info("Elapsed time: "+ time);
+        log.info("Elapsed time: " + time);
     }
 
     @Override
@@ -581,13 +602,149 @@ public class BasePage implements ElementActions, JSExecutorActions, MouseAndKeyb
 
     @Override
     public Object executeJavascript(String javascript) {
-        log.info("execute javascript: "+ javascript);
-        return ((JavascriptExecutor)driver).executeScript(javascript);
+        log.info("execute javascript: " + javascript);
+        return ((JavascriptExecutor) driver).executeScript(javascript);
     }
 
     @Override
-    public Dimension getScreenSize() {
-        org.openqa.selenium.Dimension windowSize = driver.manage().window().getSize();
-        return new Dimension(windowSize.getWidth(), windowSize.getHeight());
+    public void robotKeyPress(int keyEvent) throws AWTException {
+        Robot robot = new Robot();
+        robot.keyPress(keyEvent);
+        log.info("Perform Key Even Action: " + keyEvent);
     }
+
+    @Override
+    public void robotMouseMove(int xCoordinate, int yCoordinate) throws AWTException {
+        Robot robot = new Robot();
+        robot.mouseMove(xCoordinate, yCoordinate);
+        log.info("Move mouse from: " + xCoordinate + " to: " + yCoordinate);
+
+    }
+
+    @Override
+    public void robotLeftClick() throws AWTException {
+        Robot robot = new Robot();
+        robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        robot.delay(1000);
+        robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        log.info("Perform left click with robot class");
+    }
+
+    @Override
+    public void robotRightClick() throws AWTException {
+        Robot robot = new Robot();
+        robot.mousePress(InputEvent.BUTTON3_DOWN_MASK);
+        robot.delay(1000);
+        robot.mouseRelease(InputEvent.BUTTON3_DOWN_MASK);
+        log.info("Perform right click with robot class");
+    }
+
+    @Override
+    public void robotWaitFor(int miliseconds) throws AWTException {
+        Robot robot = new Robot();
+        robot.delay(miliseconds);
+        log.info("Wait with Robot class for "+miliseconds+" miliseconds");
+    }
+
+
+    @Override
+    public void robotDoubleClick() throws AWTException {
+        Robot robot = new Robot();
+        robot.mousePress(InputEvent.BUTTON1_MASK);
+        robot.mouseRelease(InputEvent.BUTTON1_MASK);
+        robot.delay(1000);
+        robot.mousePress(InputEvent.BUTTON1_MASK);
+        robot.mouseRelease(InputEvent.BUTTON1_MASK);
+        log.info("Perform double click with robot");
+    }
+
+    @Override
+    public void robotPressEnter() throws AWTException {
+        Robot robot = new Robot();
+        robot.delay(1000);
+        robot.keyPress(KeyEvent.VK_ENTER);
+        robot.delay(1000);
+        log.info("Perform Enter click with robot");
+    }
+
+    @Override
+    public void robotPressTab() throws AWTException {
+        Robot robot = new Robot();
+        robot.delay(1000);
+        robot.keyPress(KeyEvent.VK_TAB);
+        robot.delay(1000);
+        log.info("Perform Tab with robot");
+    }
+
+    @Override
+    public void robotSelectAll() throws AWTException {
+        Robot robot = new Robot();
+        robot.keyPress(KeyEvent.VK_CONTROL);
+        robot.keyPress(KeyEvent.VK_A);
+        robot.delay(1000);
+        robot.keyRelease(KeyEvent.VK_CONTROL);
+        robot.keyRelease(KeyEvent.VK_A);
+        log.info("Perform select all with robot");
+    }
+
+    @Override
+    public void robotType(String keyboard) throws AWTException {
+        Robot robot = new Robot();
+        switch (keyboard) {
+        case "alt": robot.keyPress(KeyEvent.VK_ALT); break;
+        case "tab": robot.keyPress(KeyEvent.VK_TAB); break;
+        case "enter": robot.keyPress(KeyEvent.VK_ENTER); break;
+        case "shift": robot.keyPress(KeyEvent.VK_SHIFT); break;
+        case "windows": robot.keyPress(KeyEvent.VK_WINDOWS); break;
+        case "control": robot.keyPress(KeyEvent.VK_CONTROL); break;
+        case "open_bracket": robot.keyPress(KeyEvent.VK_OPEN_BRACKET); break;
+        case "escape": robot.keyPress(KeyEvent.VK_ESCAPE); break;
+        case "a": robot.keyPress(KeyEvent.VK_A); break;
+        case "b": robot.keyPress(KeyEvent.VK_B); break;
+        case "c": robot.keyPress(KeyEvent.VK_C); break;
+        case "d": robot.keyPress(KeyEvent.VK_D); break;
+        case "e": robot.keyPress(KeyEvent.VK_E); break;
+        case "f": robot.keyPress(KeyEvent.VK_F); break;
+        case "g": robot.keyPress(KeyEvent.VK_G); break;
+        case "h": robot.keyPress(KeyEvent.VK_H); break;
+        case "i": robot.keyPress(KeyEvent.VK_I); break;
+        case "j": robot.keyPress(KeyEvent.VK_J); break;
+        case "k": robot.keyPress(KeyEvent.VK_K); break;
+        case "l": robot.keyPress(KeyEvent.VK_L); break;
+        case "m": robot.keyPress(KeyEvent.VK_M); break;
+        case "n": robot.keyPress(KeyEvent.VK_N); break;
+        case "o": robot.keyPress(KeyEvent.VK_O); break;
+        case "p": robot.keyPress(KeyEvent.VK_P); break;
+        case "q": robot.keyPress(KeyEvent.VK_Q); break;
+        case "r": robot.keyPress(KeyEvent.VK_R); break;
+        case "s": robot.keyPress(KeyEvent.VK_S); break;
+        case "t": robot.keyPress(KeyEvent.VK_T); break;
+        case "u": robot.keyPress(KeyEvent.VK_U); break;
+        case "v": robot.keyPress(KeyEvent.VK_V); break;
+        case "w": robot.keyPress(KeyEvent.VK_W); break;
+        case "x": robot.keyPress(KeyEvent.VK_X); break;
+        case "y": robot.keyPress(KeyEvent.VK_Y); break;
+        case "z": robot.keyPress(KeyEvent.VK_Z); break;
+        default:
+        throw new IllegalArgumentException("Cannot type character " + keyboard);
+         }
+         log.info("Perform type: "+ keyboard);
+    }
+
+    @Override
+    public void performKeyboardAction(Keys key) {
+        Actions builder = new Actions(driver);
+        builder.sendKeys(key).build().perform();
+        builder.release().perform();
+        log.info("Keyboard Action: "+ key);
+    }
+
+    @Override
+    public void performKeyboardInputAction(String text) {
+        Actions builder = new Actions(driver);
+        builder.sendKeys(text).build().perform();
+        builder.release().perform();
+        log.info("Keyboard Input Action: "+ text);
+    }
+
 }

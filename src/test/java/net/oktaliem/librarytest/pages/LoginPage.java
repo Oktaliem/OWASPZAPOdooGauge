@@ -11,7 +11,6 @@ import org.testng.Assert;
 import java.io.IOException;
 
 import static net.oktaliem.Path.LOGIN_PAGE_URL;
-import static net.oktaliem.Path.SELENIUM_WEB;
 
 public class LoginPage extends HeaderComponent {
 

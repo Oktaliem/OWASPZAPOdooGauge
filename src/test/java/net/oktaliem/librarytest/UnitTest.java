@@ -1,9 +1,14 @@
 package net.oktaliem.librarytest;
 
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.Keys;
 import org.testng.annotations.Test;
 
+import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.io.IOException;
+
+import static net.oktaliem.Path.LOGIN_PAGE_URL;
+import static net.oktaliem.Path.SELENIUM_WEB;
 
 public class UnitTest extends BaseTest{
 
@@ -250,4 +255,43 @@ public class UnitTest extends BaseTest{
         user.loginPage().executeJavascript("document.getElementById('password').value='bitnami'");
         user.loginPage().executeJavascript("document.getElementsByClassName('btn-primary')[0].click()");
     }
+
+    @Test(description = "General - Keyboard Action ")
+    public void TC32() {
+        user.loginPage().goToWeb(LOGIN_PAGE_URL);
+        user.loginPage().performKeyboardAction(Keys.TAB);
+        user.loginPage().wait(2000);
+        user.loginPage().performKeyboardAction(Keys.TAB);
+        user.loginPage().wait(2000);
+        user.loginPage().performKeyboardAction(Keys.ENTER);
+        user.loginPage().wait(2000);
+        user.loginPage().performKeyboardInputAction("test");
+        user.loginPage().wait(2000);
+        user.loginPage().performKeyboardAction(Keys.TAB);
+        user.loginPage().wait(2000);
+        user.loginPage().performKeyboardInputAction("test");
+        user.loginPage().wait(2000);
+        user.loginPage().performKeyboardAction(Keys.ENTER);
+        user.loginPage().wait(2000);
+
+        user.loginPage().goToWeb(SELENIUM_WEB);
+        user.loginPage().wait(2000);
+        user.loginPage().performKeyboardAction(Keys.ARROW_DOWN);
+        user.loginPage().wait(1000);
+        user.loginPage().performKeyboardAction(Keys.ARROW_DOWN);
+        user.loginPage().wait(1000);
+        user.loginPage().performKeyboardAction(Keys.ARROW_DOWN);
+        user.loginPage().wait(1000);
+        user.loginPage().performKeyboardAction(Keys.ARROW_DOWN);
+        user.loginPage().wait(1000);
+        user.loginPage().performKeyboardAction(Keys.ARROW_DOWN);
+        user.loginPage().wait(1000);
+        user.loginPage().performKeyboardAction(Keys.ARROW_DOWN);
+        user.loginPage().wait(1000);
+        user.loginPage().performKeyboardAction(Keys.ARROW_DOWN);
+        user.loginPage().wait(1000);
+        user.loginPage().performKeyboardAction(Keys.ARROW_DOWN);
+        user.loginPage().wait(7000);
+    }
+
 }
