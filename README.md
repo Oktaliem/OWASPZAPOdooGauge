@@ -118,14 +118,8 @@ i.e.
 ![image](https://user-images.githubusercontent.com/26521948/68544671-9a180d00-0400-11ea-8ebf-4c5b91516ebb.png)
 
 ## Recap - Youtube
-```
-https://www.youtube.com/watch?v=Cymsg63eOP4
-```
-[![CLICK HERE](![image](https://user-images.githubusercontent.com/26521948/68544724-3a6e3180-0401-11ea-9f03-49161ccefb7c.png)
-)](https://www.youtube.com/watch?v=Cymsg63eOP4)
-
-<a href="https://www.youtube.com/watch?v=Cymsg63eOP4" target="_blank"><img src="https://user-images.githubusercontent.com/26521948/68544724-3a6e3180-0401-11ea-9f03-49161ccefb7c.png" 
-alt="CLICK HERE" width="240" height="180" border="10" /></a>
+   <a href="https://www.youtube.com/watch?v=Cymsg63eOP4" target="_blank"><img src="https://user-images.githubusercontent.com/26521948/72658109-63a1d400-39e7-11ea-9667-c652586b4508.png" 
+   alt="CLICK HERE" width="140" height="80" border="10" /></a>
 
 
 ## Testing Log
