@@ -34,13 +34,12 @@ public class OdooScanTest extends ZapScannerBase {
     @Test
     public void tc03_odooSecurityPassiveScanAfterLogin() throws IOException {
         String homePage = odoo.loginToOdoo(LOGIN_PAGE_URL);
-        spiderOdooWithZap(homePage);
+        spiderOdooWithZap(LOGIN_PAGE_URL);
         setAlertAndAttackStrength();
         zapScanner.setEnablePassiveScan(true);
         zapScanner.enableAllScanners();
         scanOdooWithZap(homePage);
         removeFalsePositive();
         writeHtmlReport("homePage.html");
-
     }
 }

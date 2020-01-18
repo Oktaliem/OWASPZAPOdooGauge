@@ -29,7 +29,7 @@ public class ZapScannerBase {
 
     public static Logger log = Logger.getLogger(OdooScanTest.class.getName());
     public static final String ZAP_PROXYHOST = "localhost";
-    public static final int ZAP_PROXYPORT = 8089;
+    public static final int ZAP_PROXYPORT = 8089; //this port should be the same as in your OWASP ZAP Desktop
     public static final String ZAP_APIKEY = null;
 
 

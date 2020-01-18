@@ -4,6 +4,7 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.Proxy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.firefox.internal.ProfilesIni;
@@ -58,9 +59,15 @@ public class DriverFactory {
     }
 
     public static DesiredCapabilities createProxyCapabilities(Proxy proxy) {
+        ChromeOptions chromeOptions = new ChromeOptions();
+        chromeOptions.addArguments("--ignore-certificate-errors");
         DesiredCapabilities capabilities = DesiredCapabilities.chrome();
-        capabilities.setCapability("proxy", proxy);
+        capabilities.setCapability(CapabilityType.PROXY, proxy);
+        capabilities.setCapability(CapabilityType.ACCEPT_SSL_CERTS,true);
+        capabilities.setCapability(CapabilityType.ACCEPT_INSECURE_CERTS,true);
+        capabilities.setCapability(ChromeOptions.CAPABILITY,chromeOptions);
         return capabilities;
+
     }
 
 
